@@ -1,0 +1,5176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberGuard | Security Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #070b10;
+            --sidebar: #0a0f15;
+            --card: #0d141c;
+            --card-light: #111a23;
+
+            --border: rgba(255, 255, 255, .08);
+
+            --text: #f4f7fa;
+            --muted: #84909d;
+
+            --green: #38e89a;
+            --green-dark: #19b875;
+
+            --blue: #4da6ff;
+            --yellow: #f5c85b;
+            --red: #ff5d67;
+            --purple: #a78bfa;
+
+            --radius: 16px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           LAYOUT
+        ===================================================== */
+
+        .dashboard {
+            min-height: 100vh;
+            display: flex;
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            background:
+                linear-gradient(180deg,
+                    #0b1118,
+                    #080d13);
+
+            border-right: 1px solid var(--border);
+
+            display: flex;
+            flex-direction: column;
+
+            z-index: 1000;
+        }
+
+
+        /* BRAND */
+
+        .brand {
+            height: 78px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 25px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(135deg,
+                    rgba(56, 232, 154, .18),
+                    rgba(77, 166, 255, .10));
+
+            border: 1px solid rgba(56, 232, 154, .22);
+
+            color: var(--green);
+
+            margin-right: 12px;
+        }
+
+        .brand-text strong {
+            display: block;
+
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 17px;
+
+            letter-spacing: .5px;
+        }
+
+        .brand-text span {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            margin-top: 2px;
+        }
+
+
+        /* NAVIGATION */
+
+        .sidebar-nav {
+            flex: 1;
+
+            padding: 22px 14px;
+
+            overflow-y: auto;
+        }
+
+        .nav-label {
+            color: #56616c;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.8px;
+
+            padding: 0 12px;
+
+            margin: 8px 0 10px;
+        }
+
+        .nav-item {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 13px;
+
+            margin-bottom: 4px;
+
+            border-radius: 10px;
+
+            color: #7f8b97;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            border: 1px solid transparent;
+
+            transition: .25s ease;
+        }
+
+        .nav-item i {
+            width: 18px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        .nav-item:hover {
+            color: var(--text);
+
+            background: rgba(255, 255, 255, .035);
+        }
+
+        .nav-item.active {
+            color: var(--green);
+
+            background:
+                linear-gradient(90deg,
+                    rgba(56, 232, 154, .10),
+                    rgba(56, 232, 154, .025));
+
+            border-color: rgba(56, 232, 154, .12);
+        }
+
+        .nav-badge {
+            margin-left: auto;
+
+            min-width: 21px;
+            height: 20px;
+
+            padding: 0 6px;
+
+            border-radius: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 9px;
+
+            background: rgba(255, 93, 103, .12);
+
+            color: var(--red);
+        }
+
+
+        /* SIDEBAR BOTTOM */
+
+        .sidebar-bottom {
+            padding: 14px;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .profile-mini {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 9px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(135deg,
+                    #183e36,
+                    #102c3d);
+
+            color: var(--green);
+
+            font-weight: 700;
+
+            font-size: 12px;
+        }
+
+        .profile-mini-info {
+            min-width: 0;
+        }
+
+        .profile-mini-info strong {
+            display: block;
+
+            font-size: 12px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        .profile-mini-info span {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-top: 2px;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .main {
+            width: calc(100% - 260px);
+
+            margin-left: 260px;
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           TOPBAR
+        ===================================================== */
+
+        .topbar {
+            height: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 34px;
+
+            border-bottom: 1px solid var(--border);
+
+            background: rgba(7, 11, 16, .88);
+
+            backdrop-filter: blur(15px);
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+        }
+
+        .page-title h1 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 20px;
+
+            font-weight: 600;
+        }
+
+        .page-title p {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 10px;
+
+            border: 1px solid var(--border);
+
+            background: rgba(255, 255, 255, .025);
+
+            color: #8995a0;
+
+            cursor: pointer;
+
+            position: relative;
+
+            transition: .25s ease;
+        }
+
+        .icon-btn:hover {
+            color: var(--green);
+
+            border-color: rgba(56, 232, 154, .25);
+        }
+
+        .notification-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--red);
+
+            position: absolute;
+
+            top: 8px;
+            right: 8px;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .content {
+            padding: 32px 34px 50px;
+        }
+
+        .section {
+            display: none;
+
+            animation: sectionIn .35s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes sectionIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =====================================================
+           WELCOME
+        ===================================================== */
+
+        .welcome {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 27px;
+
+            font-weight: 600;
+        }
+
+        .welcome h2 span {
+            color: var(--green);
+        }
+
+        .welcome p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            margin-top: 6px;
+        }
+
+        .security-status {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 9px 13px;
+
+            border-radius: 9px;
+
+            border: 1px solid rgba(56, 232, 154, .18);
+
+            background: rgba(56, 232, 154, .06);
+
+            color: var(--green);
+
+            font-size: 11px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow: 0 0 12px rgba(56, 232, 154, .7);
+        }
+
+
+        /* =====================================================
+           STAT CARDS
+        ===================================================== */
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .stat-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 19px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: .25s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+
+            border-color: rgba(255, 255, 255, .13);
+        }
+
+        .stat-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 90px;
+            height: 90px;
+
+            right: -35px;
+            bottom: -40px;
+
+            border-radius: 50%;
+
+            background: rgba(56, 232, 154, .06);
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-icon {
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+        }
+
+        .green-icon {
+            color: var(--green);
+            background: rgba(56, 232, 154, .08);
+        }
+
+        .red-icon {
+            color: var(--red);
+            background: rgba(255, 93, 103, .08);
+        }
+
+        .blue-icon {
+            color: var(--blue);
+            background: rgba(77, 166, 255, .08);
+        }
+
+        .yellow-icon {
+            color: var(--yellow);
+            background: rgba(245, 200, 91, .08);
+        }
+
+        .stat-label {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-top: 17px;
+        }
+
+        .stat-number {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 27px;
+
+            font-weight: 600;
+
+            margin-top: 4px;
+        }
+
+        .stat-change {
+            font-size: 9px;
+
+            margin-top: 5px;
+
+            color: var(--green);
+        }
+
+        .stat-change.warning {
+            color: var(--yellow);
+        }
+
+        .stat-change.danger {
+            color: var(--red);
+        }
+
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
+        .dashboard-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.4fr .9fr;
+
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 17px 19px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-header h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .card-header a {
+            color: var(--green);
+
+            font-size: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+
+        /* =====================================================
+           SECURITY SCORE
+        ===================================================== */
+
+        .score-wrap {
+            display: flex;
+            align-items: center;
+
+            gap: 22px;
+        }
+
+        .score-circle {
+            width: 125px;
+            height: 125px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            background:
+                conic-gradient(var(--green) 0 84%,
+                    rgba(255, 255, 255, .07) 84% 100%);
+        }
+
+        .score-circle::before {
+            content: "";
+
+            position: absolute;
+
+            width: 99px;
+            height: 99px;
+
+            border-radius: 50%;
+
+            background: var(--card);
+        }
+
+        .score-value {
+            position: relative;
+
+            text-align: center;
+        }
+
+        .score-value strong {
+            display: block;
+
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 27px;
+        }
+
+        .score-value span {
+            color: var(--muted);
+
+            font-size: 9px;
+        }
+
+        .score-info h4 {
+            font-size: 14px;
+
+            margin-bottom: 7px;
+        }
+
+        .score-info p {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            margin-bottom: 12px;
+        }
+
+        .score-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 6px;
+        }
+
+        .tag {
+            padding: 5px 8px;
+
+            border-radius: 5px;
+
+            background: rgba(255, 255, 255, .04);
+
+            color: #9ba6b1;
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           THREATS
+        ===================================================== */
+
+        .threat-item {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .threat-item:last-child {
+            border-bottom: 0;
+        }
+
+        .threat-icon {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+        }
+
+        .threat-details {
+            flex: 1;
+        }
+
+        .threat-details strong {
+            display: block;
+
+            font-size: 11px;
+        }
+
+        .threat-details span {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+        .severity {
+            font-size: 8px;
+
+            font-weight: 700;
+
+            padding: 5px 7px;
+
+            border-radius: 5px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .5px;
+        }
+
+        .critical {
+            color: var(--red);
+            background: rgba(255, 93, 103, .08);
+        }
+
+        .medium {
+            color: var(--yellow);
+            background: rgba(245, 200, 91, .08);
+        }
+
+        .low {
+            color: var(--green);
+            background: rgba(56, 232, 154, .08);
+        }
+
+
+        /* =====================================================
+           ACTIVITY
+        ===================================================== */
+
+        .activity-list {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .activity-item {
+            display: flex;
+
+            gap: 12px;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .activity-item:last-child {
+            border-bottom: 0;
+        }
+
+        .activity-dot {
+            width: 8px;
+            height: 8px;
+
+            margin-top: 5px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            flex-shrink: 0;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-content strong {
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 500;
+        }
+
+        .activity-content span {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+        .activity-time {
+            color: #56616c;
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           PAGE HEAD
+        ===================================================== */
+
+        .page-head {
+            margin-bottom: 24px;
+        }
+
+        .page-head h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 24px;
+        }
+
+        .page-head p {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           TABLE
+        ===================================================== */
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 700px;
+        }
+
+        th {
+            text-align: left;
+
+            color: #687480;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            padding: 13px 17px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 15px 17px;
+
+            border-bottom: 1px solid rgba(255, 255, 255, .045);
+
+            font-size: 11px;
+
+            color: #aeb7c0;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        td strong {
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           VULNERABILITY CARDS
+        ===================================================== */
+
+        .vulnerability-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+        .vulnerability-card {
+            padding: 19px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+        }
+
+        .vuln-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cve {
+            color: var(--blue);
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+        .vulnerability-card h3 {
+            font-size: 13px;
+
+            margin: 18px 0 8px;
+        }
+
+        .vulnerability-card p {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+            min-height: 48px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 5px;
+
+            margin-top: 17px;
+
+            border-radius: 20px;
+
+            background: rgba(255, 255, 255, .06);
+
+            overflow: hidden;
+        }
+
+        .progress span {
+            display: block;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: var(--red);
+        }
+
+
+        /* =====================================================
+           DEVICES
+        ===================================================== */
+
+        .device-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+        .device-card {
+            padding: 18px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+        }
+
+        .device-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: rgba(77, 166, 255, .08);
+
+            color: var(--blue);
+        }
+
+        .device-card h3 {
+            font-size: 13px;
+
+            margin-top: 16px;
+        }
+
+        .device-card p {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-top: 4px;
+        }
+
+        .device-status {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            margin-top: 14px;
+
+            font-size: 9px;
+
+            color: var(--green);
+        }
+
+        .device-status i {
+            font-size: 6px;
+        }
+
+
+        /* =====================================================
+           REPORTS
+        ===================================================== */
+
+        .report-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+        .report-card {
+            padding: 20px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+        }
+
+        .report-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 10px;
+
+            background: rgba(167, 139, 250, .08);
+
+            color: var(--purple);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .report-card h3 {
+            font-size: 13px;
+
+            margin-top: 17px;
+        }
+
+        .report-card p {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+            margin-top: 5px;
+        }
+
+        .report-btn {
+            margin-top: 16px;
+
+            border: 1px solid var(--border);
+
+            background: rgba(255, 255, 255, .03);
+
+            color: #b7c0c8;
+
+            padding: 8px 11px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+
+            cursor: pointer;
+        }
+
+        .report-btn:hover {
+            color: var(--green);
+
+            border-color: rgba(56, 232, 154, .2);
+        }
+
+
+        /* =====================================================
+           SETTINGS
+        ===================================================== */
+
+        .settings-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .settings-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 21px;
+        }
+
+        .settings-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+        .setting-row {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .setting-row:last-child {
+            border-bottom: 0;
+        }
+
+        .setting-row strong {
+            display: block;
+
+            font-size: 11px;
+        }
+
+        .setting-row span {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+        .toggle {
+            width: 39px;
+            height: 21px;
+
+            border-radius: 30px;
+
+            background: var(--green);
+
+            position: relative;
+
+            cursor: pointer;
+
+            flex-shrink: 0;
+        }
+
+        .toggle::after {
+            content: "";
+
+            width: 15px;
+            height: 15px;
+
+            border-radius: 50%;
+
+            background: #07100c;
+
+            position: absolute;
+
+            right: 3px;
+            top: 3px;
+        }
+
+
+        /* =====================================================
+           MOBILE BUTTON
+        ===================================================== */
+
+        .mobile-menu {
+            display: none;
+
+            width: 38px;
+            height: 38px;
+
+            border: 1px solid var(--border);
+
+            background: transparent;
+
+            color: white;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MOBILE OVERLAY
+        ===================================================== */
+
+        .sidebar-overlay {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, .65);
+
+            z-index: 900;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vulnerability-grid,
+            .device-grid,
+            .report-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+
+                transition: .3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+            .main {
+                width: 100%;
+
+                margin-left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .content {
+                padding: 24px 18px 40px;
+            }
+
+            .welcome {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 560px) {
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vulnerability-grid,
+            .device-grid,
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome h2 {
+                font-size: 23px;
+            }
+
+            .score-wrap {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .top-actions .hide-mobile {
+                display: none;
+            }
+
+        }
+
+        /* =====================================================
+           CUSTOM MODAL & TOAST ADDITIONS
+        ===================================================== */
+
+        /* ACTIVE FILTER */
+        .report-btn.active-filter {
+            color: var(--green) !important;
+            border-color: rgba(56, 232, 154, 0.4) !important;
+            background: rgba(56, 232, 154, 0.08) !important;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 2000;
+        }
+
+        .toast {
+            background: var(--card-light);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--green);
+            color: var(--text);
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1), toastOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) 3.7s forwards;
+            min-width: 250px;
+        }
+
+        .toast.toast-error {
+            border-left-color: var(--red);
+        }
+
+        .toast.toast-warning {
+            border-left-color: var(--yellow);
+        }
+
+        @keyframes toastIn {
+            from {
+                transform: translateY(20px) scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes toastOut {
+            from {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(20px) scale(0.95);
+                opacity: 0;
+            }
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 1100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--red);
+        }
+
+        .modal-body {
+            padding: 24px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .modal-body table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .modal-body td {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 12px;
+            color: #aeb7c0;
+        }
+
+        .modal-body td strong {
+            color: var(--text);
+        }
+
+        .modal-body tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.01);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(12px) scale(0.98);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .brand-logo {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="dashboard">
+
+
+        <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+
+
+
+                <div class="brand-text">
+                    <img src="assets/logo.webp" alt="CyberGuard Logo" class="brand-logo">
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+
+
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fa-solid fa-grid-2"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="nav-item" data-section="security">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Security Overview</span>
+                </a>
+
+
+
+
+
+
+                <a href="#" class="nav-item" data-section="incidents">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>Incidents</span>
+                    <span class="nav-badge">2</span>
+                </a>
+
+
+
+                <a href="#" class="nav-item" data-section="devices">
+                    <i class="fa-solid fa-laptop"></i>
+                    <span>Devices</span>
+                </a>
+
+
+
+
+                <a href="#" class="nav-item" data-section="activity">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Activity Logs</span>
+                </a>
+
+
+                <a href="#" class="nav-item" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="profile-mini">
+
+                    <div class="avatar" id="avatar">
+                        AK
+                    </div>
+
+                    <div class="profile-mini-info">
+
+                        <strong id="sidebarUserName">
+                            Security User
+                        </strong>
+
+                        <span>
+                            Protected Account
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+        <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+        <main class="main">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div style="display:flex;align-items:center;gap:12px;">
+
+                    <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div class="page-title">
+
+                        <h1 id="topTitle">
+                            Security Dashboard
+                        </h1>
+
+                        <p id="topSubtitle">
+                            Real-time protection & system intelligence
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="top-actions">
+
+                    <button class="icon-btn hide-mobile" title="Security Status">
+                        <i class="fa-solid fa-signal"></i>
+                    </button>
+
+                    <button class="icon-btn" id="notificationBtn" title="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span class="notification-dot"></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <div class="content">
+
+
+                <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+                <section class="section active" id="dashboard">
+
+                    <div class="welcome">
+
+                        <div>
+
+                            <h2>
+                                Welcome back,
+                                <span id="welcomeName">
+                                    Security User
+                                </span>
+                            </h2>
+
+                            <p>
+                                Here's your latest security intelligence and protection status.
+                            </p>
+
+                        </div>
+
+                        <div class="security-status">
+
+                            <span class="status-dot"></span>
+
+                            System Protected
+
+                        </div>
+
+                    </div>
+
+                    <!-- QUICK SECURITY ACTIONS -->
+                    <div class="card" style="margin-bottom: 20px; padding: 20px;">
+                        <h3
+                            style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 15px;">
+                            QUICK SECURITY ACTIONS</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <button class="report-btn btn-quick-scan" onclick="window.location.href='404.html'"
+                                style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                <i class="fa-solid fa-circle-play" style="color: var(--green); margin-right: 6px;"></i>
+                                Run Security Scan
+                            </button>
+
+                            <button class="report-btn" onclick="window.location.href='404.html'"
+                                style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                <i class="fa-solid fa-file-invoice" style="color: var(--blue); margin-right: 6px;"></i>
+                                View Security Report
+                            </button>
+
+                            <button class="report-btn" onclick="window.location.href='404.html'"
+                                style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                <i class="fa-solid fa-triangle-exclamation"
+                                    style="color: var(--red); margin-right: 6px;"></i>
+                                Review Incidents
+                            </button>
+
+                            <button class="report-btn" onclick="window.location.href='404.html'"
+                                style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                <i class="fa-solid fa-laptop" style="color: var(--purple); margin-right: 6px;"></i>
+                                Manage Devices
+                            </button>
+
+                            <button class="report-btn btn-quick-status" onclick="window.location.href='404.html'"
+                                style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                <i class="fa-solid fa-signal" style="color: var(--yellow); margin-right: 6px;"></i>
+                                Check Security Status
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STATS -->
+
+                    <div class="stats-grid">
+
+                        <div class="stat-card">
+
+                            <div class="stat-top">
+
+                                <div class="stat-icon green-icon">
+                                    <i class="fa-solid fa-shield"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="stat-label">
+                                Security Score
+                            </div>
+
+                            <div class="stat-number">
+                                84%
+                            </div>
+
+                            <div class="stat-change">
+                                ↑ 6.4% this month
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-top">
+
+                                <div class="stat-icon red-icon">
+                                    <i class="fa-solid fa-bug"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="stat-label">
+                                Active Threats
+                            </div>
+
+                            <div class="stat-number">
+                                04
+                            </div>
+
+                            <div class="stat-change danger">
+                                1 critical threat
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-top">
+
+                                <div class="stat-icon blue-icon">
+                                    <i class="fa-solid fa-laptop"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="stat-label">
+                                Protected Devices
+                            </div>
+
+                            <div class="stat-number">
+                                12
+                            </div>
+
+                            <div class="stat-change">
+                                All devices online
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-top">
+
+                                <div class="stat-icon yellow-icon">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="stat-label">
+                                Vulnerabilities
+                            </div>
+
+                            <div class="stat-number">
+                                07
+                            </div>
+
+                            <div class="stat-change warning">
+                                3 need attention
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SECURITY STATISTICS (NEW COMPACT STAT CARDS) -->
+                    <h3
+                        style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; margin: 25px 0 15px;">
+                        SECURITY STATISTICS</h3>
+                    <div class="stats-grid" style="margin-bottom: 20px;">
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon green-icon">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                            <div class="stat-label">Security Score</div>
+                            <div class="stat-number" id="dbScoreVal">92 / 100</div>
+                            <div class="stat-change" style="color: var(--green);">Excellent</div>
+                            <button class="report-btn" data-open="security"
+                                style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Details</button>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon red-icon">
+                                    <i class="fa-solid fa-shield-virus"></i>
+                                </div>
+                            </div>
+                            <div class="stat-label">Threats Blocked</div>
+                            <div class="stat-number">148</div>
+                            <div class="stat-change" style="color: var(--muted);">This Month</div>
+                            <button class="report-btn" data-open="activity"
+                                style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Activity</button>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon blue-icon">
+                                    <i class="fa-solid fa-laptop"></i>
+                                </div>
+                            </div>
+                            <div class="stat-label">Protected Devices</div>
+                            <div class="stat-number" id="dbProtectedDevicesCount">07</div>
+                            <div class="stat-change" style="color: var(--muted);">All Devices</div>
+                            <button class="report-btn" data-open="devices"
+                                style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Devices</button>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-top">
+                                <div class="stat-icon yellow-icon">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                </div>
+                            </div>
+                            <div class="stat-label">Open Incidents</div>
+                            <div class="stat-number" id="dbOpenIncidentsCount">04</div>
+                            <div class="stat-change danger" id="dbHighIncidentsLabel">1 High Priority</div>
+                            <button class="report-btn" data-open="incidents"
+                                style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Incidents</button>
+                        </div>
+                    </div>
+
+                    <!-- DASHBOARD GRID -->
+
+                    <div class="dashboard-grid">
+
+
+                        <!-- SECURITY SCORE -->
+
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <h3>
+                                    Security Health
+                                </h3>
+
+                                <a href="#" data-open="security">
+                                    View Details
+                                </a>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="score-wrap">
+
+                                    <div class="score-circle">
+
+                                        <div class="score-value">
+
+                                            <strong id="dbHealthCircleScore">
+                                                84
+                                            </strong>
+
+                                            <span>
+                                                SECURITY SCORE
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="score-info">
+
+                                        <h4>
+                                            Your environment is secure
+                                        </h4>
+
+                                        <p>
+                                            Most security controls are active.
+                                            A few recommendations can improve
+                                            your overall protection level.
+                                        </p>
+
+                                        <div class="score-tags">
+
+                                            <span class="tag">
+                                                MFA Enabled
+                                            </span>
+
+                                            <span class="tag">
+                                                Firewall Active
+                                            </span>
+
+                                            <span class="tag">
+                                                Encryption On
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- THREATS -->
+
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <h3>
+                                    Recent Threats
+                                </h3>
+
+                                <a href="#" data-open="threats">
+                                    View All
+                                </a>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="threat-item">
+
+                                    <div class="threat-icon critical">
+                                        <i class="fa-solid fa-bolt"></i>
+                                    </div>
+
+                                    <div class="threat-details">
+
+                                        <strong>
+                                            Suspicious Login
+                                        </strong>
+
+                                        <span>
+                                            Unknown IP detected
+                                        </span>
+
+                                    </div>
+
+                                    <span class="severity critical">
+                                        Critical
+                                    </span>
+
+                                </div>
+
+
+                                <div class="threat-item">
+
+                                    <div class="threat-icon medium">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+
+                                    <div class="threat-details">
+
+                                        <strong>
+                                            Phishing Attempt
+                                        </strong>
+
+                                        <span>
+                                            Email protection
+                                        </span>
+
+                                    </div>
+
+                                    <span class="severity medium">
+                                        Medium
+                                    </span>
+
+                                </div>
+
+
+                                <div class="threat-item">
+
+                                    <div class="threat-icon low">
+                                        <i class="fa-solid fa-link"></i>
+                                    </div>
+
+                                    <div class="threat-details">
+
+                                        <strong>
+                                            Unsafe URL
+                                        </strong>
+
+                                        <span>
+                                            Browser protection
+                                        </span>
+
+                                    </div>
+
+                                    <span class="severity low">
+                                        Low
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- SECURITY HEALTH (NEW DETAILED PROGRESS CARD) -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>
+                                    Security Health Breakdown
+                                </h3>
+                                <a href="#" data-open="security">
+                                    View Full
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; flex-direction: column; gap: 15px;">
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Network Security</strong>
+                                            <span style="color: var(--green);">96%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 96%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Device Protection</strong>
+                                            <span style="color: var(--green);">91%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 91%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Identity Protection</strong>
+                                            <span style="color: var(--green);">94%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 94%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Password Security</strong>
+                                            <span style="color: var(--green);">90%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 90%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Privacy Protection</strong>
+                                            <span style="color: var(--green);">88%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 88%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVITY -->
+
+                    <div class="card" style="margin-top:18px;">
+
+                        <div class="card-header">
+
+                            <h3>
+                                Recent Security Activity
+                            </h3>
+
+                            <a href="#" data-open="activity">
+                                Full Activity
+                            </a>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="activity-list">
+
+                                <!-- ENRICHED ACTIVITY ENTRIES -->
+                                <div class="activity-item">
+                                    <span class="activity-dot" style="background: var(--red);"></span>
+                                    <div class="activity-content">
+                                        <strong>Suspicious login attempt blocked</strong>
+                                        <span>Unauthorized IP blocked by firewall policy.</span>
+                                    </div>
+                                    <span class="activity-time">Today, 11:42 AM</span>
+                                </div>
+
+                                <div class="activity-item">
+                                    <span class="activity-dot" style="background: var(--blue);"></span>
+                                    <div class="activity-content">
+                                        <strong>New device connected</strong>
+                                        <span>iPhone 15 Pro added to verified devices.</span>
+                                    </div>
+                                    <span class="activity-time">Today, 09:18 AM</span>
+                                </div>
+
+                                <div class="activity-item">
+                                    <span class="activity-dot" style="background: var(--green);"></span>
+                                    <div class="activity-content">
+                                        <strong>Security scan completed</strong>
+                                        <span>Full system scan reported 0 threats.</span>
+                                    </div>
+                                    <span class="activity-time">Yesterday, 8:45 PM</span>
+                                </div>
+
+                                <div class="activity-item">
+                                    <span class="activity-dot" style="background: var(--purple);"></span>
+                                    <div class="activity-content">
+                                        <strong>Password updated</strong>
+                                        <span>Account security settings modified.</span>
+                                    </div>
+                                    <span class="activity-time">Yesterday, 6:20 PM</span>
+                                </div>
+
+                                <div class="activity-item">
+                                    <span class="activity-dot" style="background: var(--green);"></span>
+                                    <div class="activity-content">
+                                        <strong>Security score improved</strong>
+                                        <span>Score increased to 92 / 100 after review.</span>
+                                    </div>
+                                    <span class="activity-time">Aug 25</span>
+                                </div>
+
+                                <div class="activity-item">
+
+                                    <span class="activity-dot"></span>
+
+                                    <div class="activity-content">
+
+                                        <strong>
+                                            Multi-factor authentication verified
+                                        </strong>
+
+                                        <span>
+                                            Your account successfully passed MFA verification.
+                                        </span>
+
+                                    </div>
+
+                                    <span class="activity-time">
+                                        8 min ago
+                                    </span>
+
+                                </div>
+
+
+                                <div class="activity-item">
+
+                                    <span class="activity-dot"></span>
+
+                                    <div class="activity-content">
+
+                                        <strong>
+                                            Security scan completed
+                                        </strong>
+
+                                        <span>
+                                            12 connected devices scanned successfully.
+                                        </span>
+
+                                    </div>
+
+                                    <span class="activity-time">
+                                        32 min ago
+                                    </span>
+
+                                </div>
+
+
+                                <div class="activity-item">
+
+                                    <span class="activity-dot"></span>
+
+                                    <div class="activity-content">
+
+                                        <strong>
+                                            Firewall rules updated
+                                        </strong>
+
+                                        <span>
+                                            Network protection policy was synchronized.
+                                        </span>
+
+                                    </div>
+
+                                    <span class="activity-time">
+                                        1 hr ago
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <button class="report-btn" data-open="activity"
+                                style="margin-top: 15px; width: 100%; padding: 10px; font-size: 11px;">
+                                View Activity Logs
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SECURITY RECOMMENDATIONS -->
+                    <h3
+                        style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; margin: 25px 0 15px;">
+                        SECURITY RECOMMENDATIONS</h3>
+                    <div class="vulnerability-grid" style="margin-bottom: 20px;">
+                        <div class="vulnerability-card">
+                            <div class="vuln-top">
+                                <span class="cve" style="color: var(--green);">RECOMMENDED</span>
+                                <span class="severity low">High Impact</span>
+                            </div>
+                            <h3 style="margin-top: 15px; margin-bottom: 8px;">Enable Two-Factor Authentication</h3>
+                            <p style="min-height: auto; margin-bottom: 15px;">Status: <span class="severity low"
+                                    style="text-transform: none; padding: 3px 6px;">Recommended</span></p>
+                            <button class="report-btn btn-action-2fa" onclick="window.location.href='404.html'"
+                                style="width: 100%; margin-top: 0; padding: 8px;">
+                                Enable Now
+                            </button>
+                        </div>
+                        <div class="vulnerability-card">
+                            <div class="vuln-top">
+                                <span class="cve" style="color: var(--yellow);">ATTENTION REQUIRED</span>
+                                <span class="severity medium">Medium Impact</span>
+                            </div>
+                            <h3 style="margin-top: 15px; margin-bottom: 8px;">Update Your Password</h3>
+                            <p style="min-height: auto; margin-bottom: 15px;">Status: <span class="severity medium"
+                                    style="text-transform: none; padding: 3px 6px;">Password is 74 days old</span></p>
+                            <button class="report-btn btn-action-pwd" onclick="window.location.href='404.html'"
+                                style="width: 100%; margin-top: 0; padding: 8px;">
+                                Update Password
+                            </button>
+                        </div>
+                        <div class="vulnerability-card">
+                            <div class="vuln-top">
+                                <span class="cve" style="color: var(--yellow);">REVIEW NEEDED</span>
+                                <span class="severity medium">Medium Impact</span>
+                            </div>
+                            <h3 style="margin-top: 15px; margin-bottom: 8px;">Review Connected Devices</h3>
+                            <p style="min-height: auto; margin-bottom: 15px;">Status: <span class="severity medium"
+                                    style="text-transform: none; padding: 3px 6px;">1 device requires review</span></p>
+                            <button class="report-btn" onclick="window.location.href='404.html'"
+                                style="width: 100%; margin-top: 0; padding: 8px;">
+                                Review Device
+                            </button>
+                        </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 SECURITY OVERVIEW
+            ================================================== -->
+
+                <section class="section" id="security">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Security Overview
+                        </h2>
+
+                        <p>
+                            Complete overview of your current security posture.
+                        </p>
+
+                    </div>
+
+
+                    <div class="stats-grid">
+
+                        <div class="stat-card">
+
+                            <div class="stat-label">
+                                Overall Security
+                            </div>
+
+                            <div class="stat-number" id="soOverallScore">
+                                92%
+                            </div>
+
+                            <div class="stat-change" style="color: var(--green);">
+                                Excellent
+                            </div>
+
+                        </div>
+
+                        <div class="stat-card">
+
+                            <div class="stat-label">
+                                Identity Protection
+                            </div>
+
+                            <div class="stat-number">
+                                94%
+                            </div>
+
+                            <div class="stat-change" style="color: var(--green);">
+                                Protected
+                            </div>
+
+                        </div>
+
+                        <div class="stat-card">
+
+                            <div class="stat-label">
+                                Network Security
+                            </div>
+
+                            <div class="stat-number">
+                                96%
+                            </div>
+
+                            <div class="stat-change" style="color: var(--green);">
+                                Secure
+                            </div>
+
+                        </div>
+
+                        <div class="stat-card">
+
+                            <div class="stat-label">
+                                Device Protection
+                            </div>
+
+                            <div class="stat-number">
+                                91%
+                            </div>
+
+                            <div class="stat-change" style="color: var(--green);">
+                                Healthy
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-grid">
+
+                        <!-- SECURITY CONTROLS -->
+                        <div class="card">
+
+                            <div class="card-header">
+
+                                <h3>
+                                    Security Controls
+                                </h3>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="activity-list">
+
+                                    <div class="activity-item">
+
+                                        <span class="activity-dot"></span>
+
+                                        <div class="activity-content">
+
+                                            <strong>
+                                                Multi-Factor Authentication
+                                            </strong>
+
+                                            <span>
+                                                Additional identity verification is enabled.
+                                            </span>
+
+                                        </div>
+
+                                        <span class="severity low">
+                                            Enabled
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="activity-item">
+
+                                        <span class="activity-dot"></span>
+
+                                        <div class="activity-content">
+
+                                            <strong>
+                                                Endpoint Protection
+                                            </strong>
+
+                                            <span>
+                                                Real-time endpoint monitoring is active.
+                                            </span>
+
+                                        </div>
+
+                                        <span class="severity low">
+                                            Active
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="activity-item">
+
+                                        <span class="activity-dot"></span>
+
+                                        <div class="activity-content">
+
+                                            <strong>
+                                                Network Firewall
+                                            </strong>
+
+                                            <span>
+                                                Incoming and outgoing traffic is monitored.
+                                            </span>
+
+                                        </div>
+
+                                        <span class="severity low">
+                                            Active
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="activity-item">
+
+                                        <span class="activity-dot"></span>
+
+                                        <div class="activity-content">
+
+                                            <strong>
+                                                Data Encryption
+                                            </strong>
+
+                                            <span>
+                                                Sensitive data remains encrypted at rest.
+                                            </span>
+
+                                        </div>
+
+                                        <span class="severity low">
+                                            Enabled
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- SECURITY SCORE BREAKDOWN -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>
+                                    Security Score Breakdown
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; flex-direction: column; gap: 15px;">
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Overall Security Score</strong>
+                                            <span style="color: var(--green);" id="soBreakdownOverallVal">92%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 92%; background: var(--green);"
+                                                id="soBreakdownOverallProgress"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Network Security</strong>
+                                            <span style="color: var(--green);">96%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 96%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Device Protection</strong>
+                                            <span style="color: var(--green);">91%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 91%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Identity Protection</strong>
+                                            <span style="color: var(--green);">94%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 94%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Password Security</strong>
+                                            <span style="color: var(--green);">90%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 90%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 5px;">
+                                            <strong>Privacy</strong>
+                                            <span style="color: var(--green);">88%</span>
+                                        </div>
+                                        <div class="progress" style="margin-top: 0; height: 6px;">
+                                            <span style="width: 88%; background: var(--green);"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SECURITY CHECKLIST -->
+                    <div class="card" style="margin-top: 18px;">
+                        <div class="card-header">
+                            <h3>
+                                Security Checklist
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-list"
+                                style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px 30px;">
+                                <div class="activity-item"
+                                    style="border:0; padding: 5px 0; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fa-solid fa-circle-check"
+                                            style="color: var(--green); font-size: 14px;"></i>
+                                        <strong style="font-size: 12px;">Two-Factor Authentication</strong>
+                                    </div>
+                                    <span class="severity low">Completed</span>
+                                </div>
+                                <div class="activity-item"
+                                    style="border:0; padding: 5px 0; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fa-solid fa-circle-check"
+                                            style="color: var(--green); font-size: 14px;"></i>
+                                        <strong style="font-size: 12px;">Strong Password</strong>
+                                    </div>
+                                    <span class="severity low">Completed</span>
+                                </div>
+                                <div class="activity-item"
+                                    style="border:0; padding: 5px 0; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fa-solid fa-circle-check"
+                                            style="color: var(--green); font-size: 14px;"></i>
+                                        <strong style="font-size: 12px;">Recovery Email</strong>
+                                    </div>
+                                    <span class="severity low">Completed</span>
+                                </div>
+                                <div class="activity-item"
+                                    style="border:0; padding: 5px 0; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fa-solid fa-circle-check"
+                                            style="color: var(--green); font-size: 14px;"></i>
+                                        <strong style="font-size: 12px;">Device Protection</strong>
+                                    </div>
+                                    <span class="severity low">Completed</span>
+                                </div>
+                                <div class="activity-item"
+                                    style="border:0; padding: 5px 0; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fa-solid fa-circle-exclamation"
+                                            style="color: var(--yellow); font-size: 14px;"></i>
+                                        <strong style="font-size: 12px;">Privacy Settings</strong>
+                                    </div>
+                                    <span class="severity medium">Needs Review</span>
+                                </div>
+                                <div class="activity-item"
+                                    style="border:0; padding: 5px 0; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fa-solid fa-circle-exclamation"
+                                            style="color: var(--yellow); font-size: 14px;"></i>
+                                        <strong style="font-size: 12px;">Backup Codes</strong>
+                                    </div>
+                                    <span class="severity medium">Needs Review</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                <<button class="report-btn btn-checklist-complete"
+                                    onclick="window.location.href='404.html'"
+                                    style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                    Complete Now
+                                    </button>
+
+                                    <button class="report-btn btn-checklist-review"
+                                        onclick="window.location.href='404.html'"
+                                        style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                        Review Settings
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SCAN AND RECOMMENDATIONS -->
+                    <div class="dashboard-grid" style="margin-top: 18px;">
+
+                        <!-- SECURITY SCAN -->
+                        <div class="card" id="securityScanCard">
+                            <div class="card-header">
+                                <h3>
+                                    Security Scan
+                                </h3>
+                                <span id="scanStatus" class="severity low">Ready</span>
+                            </div>
+                            <div class="card-body">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 11px;">
+                                    <span>Last Scan:</span>
+                                    <strong id="lastScanTime">Today, 10:32 AM</strong>
+                                </div>
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 11px;">
+                                    <span>Result:</span>
+                                    <strong id="scanResult" style="color: var(--green);">No Critical Threats</strong>
+                                </div>
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 11px;">
+                                    <span>Items Checked:</span>
+                                    <strong id="scanItemsChecked">127</strong>
+                                </div>
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 11px;">
+                                    <span>Recommendations:</span>
+                                    <strong id="scanRecommendations" style="color: var(--yellow);">02</strong>
+                                </div>
+
+                                <!-- Scan Progress Bar (initially hidden) -->
+                                <div id="scanProgressBarContainer"
+                                    style="display: none; margin-bottom: 15px; margin-top: 10px;">
+                                    <div class="progress" style="height: 6px; margin-top: 0;">
+                                        <span id="scanProgressBar"
+                                            style="width: 0%; background: var(--green); transition: width 0.1s linear;"></span>
+                                    </div>
+                                    <div id="scanProgressText"
+                                        style="font-size: 9px; color: var(--muted); margin-top: 5px; text-align: center;">
+                                        Scanning system... 0%</div>
+                                </div>
+
+                                <button class="report-btn btn-run-scan-overview"
+                                    onclick="window.location.href='404.html'"
+                                    style="width: 100%; margin-top: 5px; padding: 10px; font-size: 11px;">
+                                    <i class="fa-solid fa-play" style="margin-right: 6px;"></i>
+                                    Run New Scan
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- SECURITY RECOMMENDATIONS -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>
+                                    Recommendations Breakdown
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; font-size: 11px;">
+                                        <div>
+                                            <strong>Password Security</strong>
+                                            <div class="progress" style="margin-top: 5px; width: 120px; height: 4px;">
+                                                <span style="width: 90%; background: var(--green);"></span>
+                                            </div>
+                                        </div>
+                                        <span class="severity low">Strong</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; font-size: 11px;">
+                                        <div>
+                                            <strong>Network Security</strong>
+                                            <div class="progress" style="margin-top: 5px; width: 120px; height: 4px;">
+                                                <span style="width: 96%; background: var(--green);"></span>
+                                            </div>
+                                        </div>
+                                        <span class="severity low">Secure</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; font-size: 11px;">
+                                        <div>
+                                            <strong>Device Protection</strong>
+                                            <div class="progress" style="margin-top: 5px; width: 120px; height: 4px;">
+                                                <span style="width: 91%; background: var(--green);"></span>
+                                            </div>
+                                        </div>
+                                        <span class="severity low">Protected</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 10px;">
+                                    <button class="report-btn btn-rec-improve" onclick="window.location.href='404.html'"
+                                        style="margin-top: 0; padding: 10px; font-size: 11px; flex: 1;">
+                                        Improve Security
+                                    </button>
+
+                                    <button class="report-btn" onclick="window.location.href='404.html'"
+                                        style="margin-top: 0; padding: 10px; font-size: 11px; flex: 1;">
+                                        View Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 THREATS
+            ================================================== -->
+
+                <section class="section" id="threats">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Threat Detection
+                        </h2>
+
+                        <p>
+                            Monitor suspicious activities detected across your environment.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <h3>
+                                Detected Threats
+                            </h3>
+
+                            <span class="severity critical">
+                                4 Active
+                            </span>
+
+                        </div>
+
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+                                        <th>Threat</th>
+                                        <th>Source</th>
+                                        <th>Detected</th>
+                                        <th>Severity</th>
+                                        <th>Status</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Suspicious Login</strong>
+                                        </td>
+
+                                        <td>
+                                            185.72.14.21
+                                        </td>
+
+                                        <td>
+                                            Today, 09:42
+                                        </td>
+
+                                        <td>
+                                            <span class="severity critical">
+                                                Critical
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Investigating
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Phishing Attempt</strong>
+                                        </td>
+
+                                        <td>
+                                            Email Gateway
+                                        </td>
+
+                                        <td>
+                                            Today, 08:17
+                                        </td>
+
+                                        <td>
+                                            <span class="severity medium">
+                                                Medium
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Blocked
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Unsafe URL</strong>
+                                        </td>
+
+                                        <td>
+                                            Web Browser
+                                        </td>
+
+                                        <td>
+                                            Yesterday
+                                        </td>
+
+                                        <td>
+                                            <span class="severity low">
+                                                Low
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Resolved
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Port Scan</strong>
+                                        </td>
+
+                                        <td>
+                                            External Network
+                                        </td>
+
+                                        <td>
+                                            Yesterday
+                                        </td>
+
+                                        <td>
+                                            <span class="severity medium">
+                                                Medium
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Blocked
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 INCIDENTS
+            ================================================== -->
+
+                <section class="section" id="incidents">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Security Incidents
+                        </h2>
+
+                        <p>
+                            Review and track security incidents requiring attention.
+                        </p>
+
+                    </div>
+
+                    <!-- INCIDENT STATISTICS -->
+                    <div class="stats-grid" style="margin-bottom: 24px;">
+                        <div class="stat-card">
+                            <div class="stat-label">Open Incidents</div>
+                            <div class="stat-number" id="incOpenCount">04</div>
+                            <div class="stat-change danger">Needs attention</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Investigating</div>
+                            <div class="stat-number" id="incInvestigatingCount">02</div>
+                            <div class="stat-change warning">Active analysis</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Resolved</div>
+                            <div class="stat-number" id="incResolvedCount">42</div>
+                            <div class="stat-change" style="color: var(--green);">Closed cases</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Critical</div>
+                            <div class="stat-number" id="incCriticalCount" style="color: var(--red);">01</div>
+                            <div class="stat-change danger">High risk</div>
+                        </div>
+                    </div>
+
+                    <!-- SEARCH AND FILTERS -->
+                    <div class="card" style="margin-bottom: 18px; padding: 15px;">
+                        <div
+                            style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between;">
+                            <!-- Search and Sort -->
+                            <div style="display: flex; gap: 10px; flex: 1; min-width: 280px;">
+                                <input type="text" id="searchIncidents" placeholder="Search incidents by name or ID..."
+                                    style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; color: var(--text); font-size: 12px;">
+                                <select id="sortIncidents"
+                                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px; color: var(--text); font-size: 12px; cursor: pointer;">
+                                    <option value="newest">Newest First</option>
+                                    <option value="severity">Highest Severity</option>
+                                    <option value="status">Status</option>
+                                </select>
+                            </div>
+                            <!-- Filters -->
+                            <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="incidentFilters">
+                                <button class="report-btn active-filter" data-filter="all"
+                                    style="margin-top: 0; padding: 6px 12px;">All</button>
+                                <button class="report-btn" data-filter="critical"
+                                    style="margin-top: 0; padding: 6px 12px;">Critical</button>
+                                <button class="report-btn" data-filter="high"
+                                    style="margin-top: 0; padding: 6px 12px;">High</button>
+                                <button class="report-btn" data-filter="medium"
+                                    style="margin-top: 0; padding: 6px 12px;">Medium</button>
+                                <button class="report-btn" data-filter="resolved"
+                                    style="margin-top: 0; padding: 6px 12px;">Resolved</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INCIDENT CARDS GRID -->
+                    <div class="vulnerability-grid" id="incidentsContainer">
+                        <!-- Incidents will be dynamically rendered here -->
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 VULNERABILITIES
+            ================================================== -->
+
+                <section class="section" id="vulnerabilities">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Vulnerabilities
+                        </h2>
+
+                        <p>
+                            Identify security weaknesses and prioritize remediation.
+                        </p>
+
+                    </div>
+
+
+                    <div class="vulnerability-grid">
+
+                        <div class="vulnerability-card">
+
+                            <div class="vuln-top">
+
+                                <span class="cve">
+                                    CVE-2026-1842
+                                </span>
+
+                                <span class="severity critical">
+                                    Critical
+                                </span>
+
+                            </div>
+
+                            <h3>
+                                Outdated Authentication Module
+                            </h3>
+
+                            <p>
+                                An outdated authentication component requires an immediate security update.
+                            </p>
+
+                            <div class="progress">
+                                <span style="width:92%;"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="vulnerability-card">
+
+                            <div class="vuln-top">
+
+                                <span class="cve">
+                                    CVE-2026-0931
+                                </span>
+
+                                <span class="severity medium">
+                                    Medium
+                                </span>
+
+                            </div>
+
+                            <h3>
+                                Weak Session Configuration
+                            </h3>
+
+                            <p>
+                                Session timeout settings should be reviewed and strengthened.
+                            </p>
+
+                            <div class="progress">
+                                <span style="width:62%;"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="vulnerability-card">
+
+                            <div class="vuln-top">
+
+                                <span class="cve">
+                                    CVE-2026-0714
+                                </span>
+
+                                <span class="severity low">
+                                    Low
+                                </span>
+
+                            </div>
+
+                            <h3>
+                                Missing Security Header
+                            </h3>
+
+                            <p>
+                                Recommended browser security headers are not configured.
+                            </p>
+
+                            <div class="progress">
+                                <span style="width:34%;"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 DEVICES
+            ================================================== -->
+
+                <section class="section" id="devices">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Protected Devices
+                        </h2>
+
+                        <p>
+                            View devices connected to your protected security environment.
+                        </p>
+
+                    </div>
+
+                    <!-- DEVICE STATISTICS -->
+                    <div class="stats-grid" style="margin-bottom: 24px;">
+                        <div class="stat-card">
+                            <div class="stat-label">Protected Devices</div>
+                            <div class="stat-number" id="devProtectedCount">07</div>
+                            <div class="stat-change" style="color: var(--green);">Secure endpoints</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">At Risk</div>
+                            <div class="stat-number" id="devAtRiskCount" style="color: var(--red);">01</div>
+                            <div class="stat-change danger">Needs attention</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Active Sessions</div>
+                            <div class="stat-number">04</div>
+                            <div class="stat-change">Current sessions</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Recently Added</div>
+                            <div class="stat-number">02</div>
+                            <div class="stat-change">Past 7 days</div>
+                        </div>
+                    </div>
+
+                    <!-- SEARCH AND FILTERS -->
+                    <div class="card" style="margin-bottom: 18px; padding: 15px;">
+                        <div
+                            style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between;">
+                            <!-- Search -->
+                            <div style="display: flex; gap: 10px; flex: 1; min-width: 250px;">
+                                <input type="text" id="searchDevices" placeholder="Search devices by name or OS..."
+                                    style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; color: var(--text); font-size: 12px;">
+                            </div>
+                            <!-- Filters -->
+                            <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="deviceFilters">
+                                <button class="report-btn active-filter" data-filter="all"
+                                    style="margin-top: 0; padding: 6px 12px;">All Devices</button>
+                                <button class="report-btn" data-filter="protected"
+                                    style="margin-top: 0; padding: 6px 12px;">Protected</button>
+                                <button class="report-btn" data-filter="at-risk"
+                                    style="margin-top: 0; padding: 6px 12px;">At Risk</button>
+                                <button class="report-btn" data-filter="desktop"
+                                    style="margin-top: 0; padding: 6px 12px;">Desktop</button>
+                                <button class="report-btn" data-filter="laptop"
+                                    style="margin-top: 0; padding: 6px 12px;">Laptop</button>
+                                <button class="report-btn" data-filter="mobile"
+                                    style="margin-top: 0; padding: 6px 12px;">Mobile</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DEVICE CARDS GRID -->
+                    <div class="device-grid" id="devicesContainer">
+                        <!-- Devices will be dynamically rendered here -->
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 ACTIVITY LOGS
+            ================================================== -->
+
+                <section class="section" id="activity">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Activity Logs
+                        </h2>
+
+                        <p>
+                            Review recent authentication, network and security events.
+                        </p>
+
+                    </div>
+
+                    <!-- SEARCH AND FILTERS -->
+                    <div class="card" style="margin-bottom: 18px; padding: 15px;">
+                        <div
+                            style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between;">
+                            <!-- Search and Sort -->
+                            <div style="display: flex; gap: 10px; flex: 1; min-width: 280px;">
+                                <input type="text" id="searchActivity" placeholder="Search activity logs..."
+                                    style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; color: var(--text); font-size: 12px;">
+                                <select id="sortActivity"
+                                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px; color: var(--text); font-size: 12px; cursor: pointer;">
+                                    <option value="newest">Newest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                </select>
+                                <button class="report-btn" id="btnClearActivityFilters"
+                                    style="margin-top: 0; padding: 8px 12px;">Clear Filters</button>
+                            </div>
+                            <!-- Filters -->
+                            <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="activityFilters">
+                                <button class="report-btn active-filter" data-filter="all"
+                                    style="margin-top: 0; padding: 6px 12px;">All</button>
+                                <button class="report-btn" data-filter="login"
+                                    style="margin-top: 0; padding: 6px 12px;">Login</button>
+                                <button class="report-btn" data-filter="devices"
+                                    style="margin-top: 0; padding: 6px 12px;">Devices</button>
+                                <button class="report-btn" data-filter="security-scan"
+                                    style="margin-top: 0; padding: 6px 12px;">Security Scan</button>
+                                <button class="report-btn" data-filter="incidents"
+                                    style="margin-top: 0; padding: 6px 12px;">Incidents</button>
+                                <button class="report-btn" data-filter="account"
+                                    style="margin-top: 0; padding: 6px 12px;">Account</button>
+                                <button class="report-btn" data-filter="settings"
+                                    style="margin-top: 0; padding: 6px 12px;">Settings</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Activity Logs Timeline</h3>
+                            <button class="report-btn" id="btnExportActivity"
+                                style="margin-top: 0; padding: 6px 12px; font-size: 10px;">
+                                <i class="fa-solid fa-download" style="margin-right: 6px;"></i>Export Activity
+                            </button>
+                        </div>
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+                                        <th>Event</th>
+                                        <th>Device</th>
+                                        <th>Location</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="activityLogsTableBody">
+                                    <!-- Activities will be dynamically rendered here -->
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 REPORTS
+            ================================================== -->
+
+                <section class="section" id="reports">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Security Reports
+                        </h2>
+
+                        <p>
+                            Generate and review security intelligence reports.
+                        </p>
+
+                    </div>
+
+
+                    <div class="report-grid">
+
+                        <div class="report-card">
+
+                            <div class="report-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+
+                            <h3>
+                                Monthly Security Report
+                            </h3>
+
+                            <p>
+                                Complete overview of threats, incidents and security posture.
+                            </p>
+
+                            <button class="report-btn" onclick="generateReport('Monthly Security Report')">
+                                <i class="fa-solid fa-download"></i>
+                                Generate Report
+                            </button>
+
+                        </div>
+
+
+                        <div class="report-card">
+
+                            <div class="report-icon">
+                                <i class="fa-solid fa-shield-virus"></i>
+                            </div>
+
+                            <h3>
+                                Threat Intelligence
+                            </h3>
+
+                            <p>
+                                Recent threat activity and detection intelligence.
+                            </p>
+
+                            <button class="report-btn" onclick="generateReport('Threat Intelligence Report')">
+                                <i class="fa-solid fa-download"></i>
+                                Generate Report
+                            </button>
+
+                        </div>
+
+
+                        <div class="report-card">
+
+                            <div class="report-icon">
+                                <i class="fa-solid fa-file-circle-check"></i>
+                            </div>
+
+                            <h3>
+                                Compliance Report
+                            </h3>
+
+                            <p>
+                                Security control and compliance readiness summary.
+                            </p>
+
+                            <button class="report-btn" onclick="generateReport('Compliance Report')">
+                                <i class="fa-solid fa-download"></i>
+                                Generate Report
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                 SETTINGS
+            ================================================== -->
+
+                <section class="section" id="settings">
+
+                    <div class="page-head">
+
+                        <h2>
+                            Security Settings
+                        </h2>
+
+                        <p>
+                            Manage your account and security preferences.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-grid">
+
+
+                        <div class="settings-card">
+
+                            <h3>
+                                Protection Settings
+                            </h3>
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        Multi-Factor Authentication
+                                    </strong>
+
+                                    <span>
+                                        Require additional verification during login.
+                                    </span>
+
+                                </div>
+
+                                <div class="toggle"></div>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        Login Alerts
+                                    </strong>
+
+                                    <span>
+                                        Receive notifications for new login activity.
+                                    </span>
+
+                                </div>
+
+                                <div class="toggle"></div>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        Threat Monitoring
+                                    </strong>
+
+                                    <span>
+                                        Continuously monitor suspicious activity.
+                                    </span>
+
+                                </div>
+
+                                <div class="toggle"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-card">
+
+                            <h3>
+                                Privacy & Notifications
+                            </h3>
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        Security Emails
+                                    </strong>
+
+                                    <span>
+                                        Receive important security notifications.
+                                    </span>
+
+                                </div>
+
+                                <div class="toggle"></div>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        Weekly Security Summary
+                                    </strong>
+
+                                    <span>
+                                        Receive a weekly security health summary.
+                                    </span>
+
+                                </div>
+
+                                <div class="toggle"></div>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div>
+
+                                    <strong>
+                                        Device Monitoring
+                                    </strong>
+
+                                    <span>
+                                        Monitor newly connected devices.
+                                    </span>
+
+                                </div>
+
+                                <div class="toggle"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+        <!-- =====================================================
+         CUSTOM MODALS & TOAST CONTAINERS
+    ====================================================== -->
+
+        <!-- INCIDENT DETAILS MODAL -->
+        <div class="modal-overlay" id="incidentModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="incModalTitle">Incident Details</h3>
+                    <button class="modal-close" onclick="closeModal('incidentModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td><strong>Incident ID:</strong></td>
+                            <td id="incModalId">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type:</strong></td>
+                            <td id="incModalType">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Severity:</strong></td>
+                            <td><span id="incModalSeverity" class="severity">-</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Status:</strong></td>
+                            <td><span id="incModalStatus" class="severity">-</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Detected Time:</strong></td>
+                            <td id="incModalTime">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Device:</strong></td>
+                            <td id="incModalDevice">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Location:</strong></td>
+                            <td id="incModalLocation">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description:</strong></td>
+                            <td id="incModalDesc">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recommended Action:</strong></td>
+                            <td id="incModalAction">-</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="report-btn" id="incModalBtnInvestigate" style="margin-top:0;">Investigate</button>
+                    <button class="report-btn" id="incModalBtnResolve"
+                        style="margin-top:0; color: var(--green); border-color: rgba(56, 232, 154, 0.2);">Mark
+                        Resolved</button>
+                    <button class="report-btn" onclick="closeModal('incidentModal')"
+                        style="margin-top:0;">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEVICE DETAILS MODAL -->
+        <div class="modal-overlay" id="deviceModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="devModalTitle">Device Details</h3>
+                    <button class="modal-close" onclick="closeModal('deviceModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td><strong>Device Name:</strong></td>
+                            <td id="devModalName">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operating System:</strong></td>
+                            <td id="devModalOS">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Security Score:</strong></td>
+                            <td><strong id="devModalScore" style="color: var(--green);">-</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Last Scan:</strong></td>
+                            <td id="devModalLastScan">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Firewall Status:</strong></td>
+                            <td id="devModalFirewall">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Antivirus Status:</strong></td>
+                            <td id="devModalAntivirus">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Disk Encryption:</strong></td>
+                            <td id="devModalEncryption">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Network Status:</strong></td>
+                            <td id="devModalNetwork">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Last Activity:</strong></td>
+                            <td id="devModalActivity">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Risk Level:</strong></td>
+                            <td><span id="devModalRisk" class="severity">-</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="report-btn" id="devModalBtnScan" style="margin-top:0;"><i class="fa-solid fa-play"
+                            style="margin-right: 5px;"></i>Run Security Scan</button>
+                    <button class="report-btn" id="devModalBtnRename" style="margin-top:0;">Rename Device</button>
+                    <button class="report-btn" id="devModalBtnRemove"
+                        style="margin-top:0; color: var(--red); border-color: rgba(255, 93, 103, 0.2);">Remove
+                        Device</button>
+                    <button class="report-btn" onclick="closeModal('deviceModal')" style="margin-top:0;">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONFIRMATION MODAL -->
+        <div class="modal-overlay" id="confirmModal">
+            <div class="modal-content" style="max-width: 400px;">
+                <div class="modal-header">
+                    <h3>Confirm Action</h3>
+                    <button class="modal-close" onclick="closeModal('confirmModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmModalText">Are you sure you want to perform this action?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="report-btn" id="confirmModalBtnYes"
+                        style="margin-top:0; color: var(--red); border-color: rgba(255, 93, 103, 0.2);">Yes,
+                        Confirm</button>
+                    <button class="report-btn" onclick="closeModal('confirmModal')"
+                        style="margin-top:0;">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOAST NOTIFICATION CONTAINER -->
+        <div class="toast-container" id="toastContainer"></div>
+
+    </div>
+
+
+    <script>
+
+        /* =====================================================
+           CYBERSECURITY DATASETS & LOGIC
+           ===================================================== */
+
+        // Toast Manager
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = `toast ${type === 'error' ? 'toast-error' : type === 'warning' ? 'toast-warning' : ''}`;
+
+            let icon = 'fa-circle-check';
+            let color = 'var(--green)';
+            if (type === 'error') {
+                icon = 'fa-circle-xmark';
+                color = 'var(--red)';
+            } else if (type === 'warning') {
+                icon = 'fa-circle-exclamation';
+                color = 'var(--yellow)';
+            }
+
+            toast.innerHTML = `
+            <i class="fa-solid ${icon}" style="color: ${color};"></i>
+            <span>${message}</span>
+        `;
+            container.appendChild(toast);
+
+            // Remove toast after animation completes
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+        }
+
+        // Modal Manager
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Dynamic Datasets
+        const incidents = [
+            {
+                id: "INC-2048",
+                title: "Unauthorized Login Attempt",
+                severity: "High",
+                status: "Investigating",
+                detected: "Today, 11:42 AM",
+                device: "Windows Desktop",
+                location: "Bengaluru, IN",
+                description: "Multiple failed login attempts detected from an unrecognized IP address in Bengaluru.",
+                recommended: "Enable Multi-factor Authentication and verify if the request was legitimate. Force password reset if necessary."
+            },
+            {
+                id: "INC-2045",
+                title: "Suspicious Device Connection",
+                severity: "Medium",
+                status: "Resolved",
+                detected: "Yesterday, 09:18 AM",
+                device: "iPhone 15 Pro",
+                location: "Bengaluru, IN",
+                description: "A new mobile device connected to the corporate network using temporary credentials.",
+                recommended: "Verify device compliance and enforce security posture check before network access."
+            },
+            {
+                id: "INC-2041",
+                title: "Network Threat Blocked",
+                severity: "High",
+                status: "Resolved",
+                detected: "Aug 25, 08:45 AM",
+                device: "Secure Server",
+                location: "Internal Network",
+                description: "An automated SQL injection scan targeting the secure server was detected and blocked by the firewall.",
+                recommended: "Update web application firewall rules and verify database user privileges."
+            },
+            {
+                id: "INC-1042",
+                title: "Unrecognized Login Attempt",
+                severity: "Critical",
+                status: "Investigating",
+                detected: "Today, 09:42 AM",
+                device: "Unknown Device",
+                location: "Unknown Location",
+                description: "An unknown device attempted to sign in with supervisor privileges from outside the secure gateway.",
+                recommended: "Block source IP immediately and verify user credentials."
+            },
+            {
+                id: "INC-1041",
+                title: "Suspicious Email Campaign",
+                severity: "Medium",
+                status: "Monitoring",
+                detected: "Today, 08:17 AM",
+                device: "Email Gateway",
+                location: "Internal",
+                description: "A high volume of inbound emails containing suspicious macro attachments was detected.",
+                recommended: "Scan all inbox folders for matching sender domains and isolate attachments."
+            }
+        ];
+
+        const devices = [
+            {
+                id: "device-macbook",
+                name: "MacBook Pro",
+                os: "macOS",
+                type: "laptop",
+                score: 96,
+                status: "Protected",
+                lastScan: "Today, 10:32 AM",
+                network: "Secure",
+                firewall: "Enabled",
+                antivirus: "Active",
+                encryption: "Enabled (FileVault)",
+                activity: "Active 5 min ago",
+                risk: "Low"
+            },
+            {
+                id: "device-iphone",
+                name: "iPhone 15 Pro",
+                os: "iOS",
+                type: "mobile",
+                score: 94,
+                status: "Protected",
+                lastScan: "Today, 08:40 AM",
+                network: "Secure",
+                firewall: "Not Applicable",
+                antivirus: "Secure (Apple Sandbox)",
+                encryption: "Enabled (Data Protection)",
+                activity: "Active 20 min ago",
+                risk: "Low"
+            },
+            {
+                id: "device-win-desktop",
+                name: "Windows Desktop",
+                os: "Windows 11",
+                type: "desktop",
+                score: 71,
+                status: "Attention Required",
+                lastScan: "Yesterday, 04:30 PM",
+                network: "Secure",
+                firewall: "Disabled (Warning)",
+                antivirus: "Out of Date",
+                encryption: "Disabled",
+                activity: "Active 1 hour ago",
+                risk: "Medium"
+            },
+            {
+                id: "device-galaxy",
+                name: "Samsung Galaxy",
+                os: "Android",
+                type: "mobile",
+                score: 93,
+                status: "Protected",
+                lastScan: "Yesterday, 11:20 AM",
+                network: "Secure",
+                firewall: "Enabled",
+                antivirus: "Active (Knox)",
+                encryption: "Enabled",
+                activity: "Active 3 hours ago",
+                risk: "Low"
+            },
+            {
+                id: "device-win-workstation",
+                name: "Windows Workstation",
+                os: "Windows 11",
+                type: "desktop",
+                score: 95,
+                status: "Protected",
+                lastScan: "Today, 09:12 AM",
+                network: "Secure",
+                firewall: "Enabled",
+                antivirus: "Active (Defender)",
+                encryption: "Enabled (BitLocker)",
+                activity: "Active 2 min ago",
+                risk: "Low"
+            },
+            {
+                id: "device-personal-mobile",
+                name: "Personal Mobile",
+                os: "Android",
+                type: "mobile",
+                score: 92,
+                status: "Protected",
+                lastScan: "Today, 09:13 AM",
+                network: "Secure",
+                firewall: "Enabled",
+                antivirus: "Active",
+                encryption: "Enabled",
+                activity: "Active 10 min ago",
+                risk: "Low"
+            },
+            {
+                id: "device-secure-server",
+                name: "Secure Server",
+                os: "Linux",
+                type: "desktop",
+                score: 98,
+                status: "Protected",
+                lastScan: "Yesterday, 08:00 PM",
+                network: "Secure",
+                firewall: "Enabled (iptables)",
+                antivirus: "Active (ClamAV)",
+                encryption: "Enabled (LUKS)",
+                activity: "Active 1 min ago",
+                risk: "Low"
+            },
+            {
+                id: "device-work-tablet",
+                name: "Work Tablet",
+                os: "iOS",
+                type: "mobile",
+                score: 95,
+                status: "Protected",
+                lastScan: "Yesterday, 03:15 PM",
+                network: "Secure",
+                firewall: "Not Applicable",
+                antivirus: "Secure (Apple Sandbox)",
+                encryption: "Enabled",
+                activity: "Active 4 hours ago",
+                risk: "Low"
+            }
+        ];
+
+        const activities = [
+            {
+                id: "act-1",
+                event: "Successful Login",
+                device: "Chrome on Windows",
+                location: "Bengaluru, IN",
+                time: "Today, 10:42 AM",
+                status: "Successful",
+                type: "login"
+            },
+            {
+                id: "act-2",
+                event: "New Device Connected",
+                device: "iPhone 15 Pro",
+                location: "Bengaluru, IN",
+                time: "Today, 09:18 AM",
+                status: "Verified",
+                type: "devices"
+            },
+            {
+                id: "act-3",
+                event: "Security Scan Completed",
+                device: "Windows Desktop",
+                location: "127 items checked",
+                time: "Today, 08:45 AM",
+                status: "Safe",
+                type: "security-scan"
+            },
+            {
+                id: "act-4",
+                event: "Suspicious Login Attempt",
+                device: "Chrome on Windows",
+                location: "Bengaluru, IN",
+                time: "Yesterday, 08:40 PM",
+                status: "Blocked",
+                type: "login"
+            },
+            {
+                id: "act-5",
+                event: "Password Changed",
+                device: "Account Security",
+                location: "Web Settings",
+                time: "Yesterday, 06:20 PM",
+                status: "Completed",
+                type: "account"
+            },
+            {
+                id: "act-6",
+                event: "Security Score Improved",
+                device: "92 / 100",
+                location: "System Profile",
+                time: "Aug 25, 02:30 PM",
+                status: "Improved",
+                type: "settings"
+            },
+            {
+                id: "act-7",
+                event: "Successful Login",
+                device: "Windows Workstation",
+                location: "Chennai, IN",
+                time: "Today, 09:12 AM",
+                status: "Allowed",
+                type: "login"
+            },
+            {
+                id: "act-8",
+                event: "MFA Verification",
+                device: "Personal Mobile",
+                location: "Chennai, IN",
+                time: "Today, 09:13 AM",
+                status: "Verified",
+                type: "login"
+            },
+            {
+                id: "act-9",
+                event: "Unknown Login",
+                device: "Unknown Device",
+                location: "Unknown Location",
+                time: "Today, 09:42 AM",
+                status: "Blocked",
+                type: "login"
+            },
+            {
+                id: "act-10",
+                event: "Firewall Rule Update",
+                device: "Secure Server",
+                location: "Internal",
+                time: "Yesterday, 10:00 AM",
+                status: "Completed",
+                type: "settings"
+            }
+        ];
+
+        // Filter & Search states
+        let incFilter = 'all';
+        let incSearch = '';
+        let incSort = 'newest';
+
+        let devFilter = 'all';
+        let devSearch = '';
+
+        let actFilter = 'all';
+        let actSearch = '';
+        let actSort = 'newest';
+
+        // RENDER FUNCTIONS
+        function renderIncidents() {
+            const container = document.getElementById('incidentsContainer');
+            if (!container) return;
+
+            // Filtering
+            let filtered = incidents.filter(inc => {
+                const matchesSearch = inc.title.toLowerCase().includes(incSearch.toLowerCase()) ||
+                    inc.id.toLowerCase().includes(incSearch.toLowerCase()) ||
+                    inc.device.toLowerCase().includes(incSearch.toLowerCase());
+
+                if (incFilter === 'all') return matchesSearch;
+                if (incFilter === 'resolved') return inc.status.toLowerCase() === 'resolved' && matchesSearch;
+                return inc.severity.toLowerCase() === incFilter && matchesSearch;
+            });
+
+            // Sorting
+            filtered.sort((a, b) => {
+                if (incSort === 'newest') {
+                    return 1; // Keeping initial ordering for timeline representation
+                } else if (incSort === 'severity') {
+                    const map = { 'Critical': 4, 'High': 3, 'Medium': 2, 'Low': 1 };
+                    return (map[b.severity] || 0) - (map[a.severity] || 0);
+                } else if (incSort === 'status') {
+                    return a.status.localeCompare(b.status);
+                }
+                return 0;
+            });
+
+            container.innerHTML = filtered.map(inc => {
+                const isResolved = inc.status === 'Resolved';
+                const severityClass = inc.severity.toLowerCase();
+                const statusClass = isResolved ? 'low' : (inc.status === 'Investigating' ? 'warning' : 'medium');
+
+                return `
+                <div class="vulnerability-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="vuln-top">
+                            <span class="cve">${inc.id}</span>
+                            <span class="severity ${severityClass}">${inc.severity}</span>
+                        </div>
+                        <h3 style="margin-top: 15px; margin-bottom: 5px;">${inc.title}</h3>
+                        <p style="min-height: auto; margin-bottom: 5px; font-size: 10px;">Detected: ${inc.detected}</p>
+                        <p style="min-height: auto; margin-bottom: 12px; font-size: 10px; color: var(--muted);">Device: ${inc.device}</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px;">
+                        <span class="severity ${statusClass}">${inc.status}</span>
+                        <div style="display: flex; gap: 6px;">
+                            ${!isResolved ? `<button class="report-btn" onclick="triggerInvestigate('${inc.id}')" style="margin-top:0; padding: 5px 8px;">Investigate</button>` : ''}
+                            <button class="report-btn" onclick="triggerIncidentDetails('${inc.id}')" style="margin-top:0; padding: 5px 8px;">View Details</button>
+                            ${!isResolved ? `<button class="report-btn" onclick="triggerResolve('${inc.id}')" style="margin-top:0; padding: 5px 8px; color: var(--green); border-color: rgba(56, 232, 154, 0.2);">Resolve</button>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+
+            // Update statistics
+            const open = incidents.filter(i => i.status !== 'Resolved').length;
+            const investigating = incidents.filter(i => i.status === 'Investigating').length;
+            const resolved = incidents.filter(i => i.status === 'Resolved').length + 40;
+            const critical = incidents.filter(i => i.severity === 'Critical' && i.status !== 'Resolved').length;
+
+            document.getElementById('incOpenCount').textContent = String(open).padStart(2, '0');
+            document.getElementById('incInvestigatingCount').textContent = String(investigating).padStart(2, '0');
+            document.getElementById('incResolvedCount').textContent = String(resolved).padStart(2, '0');
+            document.getElementById('incCriticalCount').textContent = String(critical).padStart(2, '0');
+
+            // Update Dashboard Stats Counters if they exist
+            const dbOpen = document.getElementById('dbOpenIncidentsCount');
+            if (dbOpen) dbOpen.textContent = String(open).padStart(2, '0');
+
+            const dbHigh = document.getElementById('dbHighIncidentsLabel');
+            if (dbHigh) dbHigh.textContent = `${critical} Critical / High`;
+
+            // Update Sidebar Badge
+            const sidebarBadge = document.querySelector('.nav-item[data-section="incidents"] .nav-badge');
+            if (sidebarBadge) {
+                sidebarBadge.textContent = open;
+                sidebarBadge.style.display = open > 0 ? 'flex' : 'none';
+            }
+        }
+
+        function renderDevices() {
+            const container = document.getElementById('devicesContainer');
+            if (!container) return;
+
+            let filtered = devices.filter(dev => {
+                const matchesSearch = dev.name.toLowerCase().includes(devSearch.toLowerCase()) ||
+                    dev.os.toLowerCase().includes(devSearch.toLowerCase());
+
+                if (devFilter === 'all') return matchesSearch;
+                if (devFilter === 'protected') return dev.status === 'Protected' && matchesSearch;
+                if (devFilter === 'at-risk') return dev.status === 'Attention Required' && matchesSearch;
+                return dev.type === devFilter && matchesSearch;
+            });
+
+            container.innerHTML = filtered.map(dev => {
+                const isProtected = dev.status === 'Protected';
+                const statusColor = isProtected ? 'var(--green)' : 'var(--yellow)';
+                const icon = dev.type === 'laptop' ? 'fa-laptop' : (dev.type === 'mobile' ? 'fa-mobile-screen' : 'fa-server');
+
+                return `
+                <div class="device-card">
+                    <div class="device-icon" style="color: ${isProtected ? 'var(--blue)' : 'var(--red)'}; background: ${isProtected ? 'rgba(77,166,255,.08)' : 'rgba(255,93,103,.08)'};">
+                        <i class="fa-solid ${icon}"></i>
+                    </div>
+                    <h3>${dev.name}</h3>
+                    <p>${dev.os} · ${dev.type.charAt(0).toUpperCase() + dev.type.slice(1)}</p>
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 10px;">
+                        <span>Security Score:</span>
+                        <strong style="color: ${isProtected ? 'var(--green)' : 'var(--red)'};">${dev.score}%</strong>
+                    </div>
+                    <div class="device-status" style="color: ${statusColor};">
+                        <i class="fa-solid fa-circle" style="box-shadow: 0 0 10px ${statusColor};"></i>
+                        ${dev.status} · Online
+                    </div>
+                    <div style="display: flex; gap: 6px; margin-top: 15px; width: 100%;">
+                        ${!isProtected ? `<button class="report-btn" onclick="triggerSecureDevice('${dev.id}')" style="margin-top: 0; flex: 1; color: var(--yellow); border-color: rgba(245,200,91,0.2);">Secure</button>` : ''}
+                        <button class="report-btn" onclick="triggerDeviceScan('${dev.id}')" style="margin-top: 0; flex: 1;">Scan</button>
+                        <button class="report-btn" onclick="triggerDeviceDetails('${dev.id}')" style="margin-top: 0; flex: 1;">Details</button>
+                    </div>
+                </div>
+            `;
+            }).join('');
+
+            // Update statistics
+            const protectedCount = devices.filter(d => d.status === 'Protected').length;
+            const atRiskCount = devices.filter(d => d.status !== 'Protected').length;
+
+            document.getElementById('devProtectedCount').textContent = String(protectedCount).padStart(2, '0');
+            document.getElementById('devAtRiskCount').textContent = String(atRiskCount).padStart(2, '0');
+
+            // Update Dashboard Stats Counters if they exist
+            const dbProtected = document.getElementById('dbProtectedDevicesCount');
+            if (dbProtected) dbProtected.textContent = String(protectedCount).padStart(2, '0');
+        }
+
+        function renderActivityLogs() {
+            const tbody = document.getElementById('activityLogsTableBody');
+            if (!tbody) return;
+
+            let filtered = activities.filter(act => {
+                const matchesSearch = act.event.toLowerCase().includes(actSearch.toLowerCase()) ||
+                    act.device.toLowerCase().includes(actSearch.toLowerCase()) ||
+                    act.location.toLowerCase().includes(actSearch.toLowerCase());
+
+                if (actFilter === 'all') return matchesSearch;
+                return act.type === actFilter && matchesSearch;
+            });
+
+            // Sorting
+            if (actSort === 'newest') {
+                // Keep current order (timeline)
+            } else if (actSort === 'oldest') {
+                filtered = [...filtered].reverse();
+            }
+
+            tbody.innerHTML = filtered.map(act => {
+                const statusClass = act.status === 'Blocked' ? 'critical' : (act.status === 'Failed' ? 'critical' : 'low');
+                return `
+                <tr>
+                    <td><strong>${act.event}</strong></td>
+                    <td>${act.device}</td>
+                    <td>${act.location}</td>
+                    <td>${act.time}</td>
+                    <td><span class="severity ${statusClass}">${act.status}</span></td>
+                    <td>
+                        <button class="report-btn" onclick="triggerActivityDetails('${act.id}')" style="margin-top: 0; padding: 4px 8px;">View Details</button>
+                    </td>
+                </tr>
+            `;
+            }).join('');
+        }
+
+        // ACTIONS TRIGGERS
+        window.triggerInvestigate = function (id) {
+            showToast(`Investigation started for ${id} ✓`, 'warning');
+        };
+
+        window.triggerResolve = function (id) {
+            const inc = incidents.find(i => i.id === id);
+            if (inc) {
+                inc.status = 'Resolved';
+                showToast(`Incident ${id} resolved successfully ✓`);
+                renderIncidents();
+                closeModal('incidentModal');
+            }
+        };
+
+        window.triggerSecureDevice = function (id) {
+            const dev = devices.find(d => d.id === id);
+            if (dev) {
+                dev.status = 'Protected';
+                dev.score = 96;
+                dev.firewall = 'Enabled';
+                dev.antivirus = 'Active';
+                dev.encryption = 'Enabled (BitLocker)';
+                dev.risk = 'Low';
+                showToast(`${dev.name} secured successfully ✓`);
+                renderDevices();
+                closeModal('deviceModal');
+            }
+        };
+
+        window.triggerDeviceScan = function (id) {
+            const dev = devices.find(d => d.id === id);
+            if (dev) {
+                showToast(`Scan initiated for ${dev.name}...`);
+                setTimeout(() => {
+                    dev.lastScan = 'Just now';
+                    showToast(`Scan complete: ${dev.name} is protected ✓`);
+                    renderDevices();
+                }, 2000);
+            }
+        };
+
+        window.triggerIncidentDetails = function (id) {
+            const inc = incidents.find(i => i.id === id);
+            if (!inc) return;
+
+            document.getElementById('incModalId').textContent = inc.id;
+            document.getElementById('incModalType').textContent = inc.title;
+
+            const sev = document.getElementById('incModalSeverity');
+            sev.className = `severity ${inc.severity.toLowerCase()}`;
+            sev.textContent = inc.severity;
+
+            const stat = document.getElementById('incModalStatus');
+            stat.className = `severity ${inc.status === 'Resolved' ? 'low' : (inc.status === 'Investigating' ? 'warning' : 'medium')}`;
+            stat.textContent = inc.status;
+
+            document.getElementById('incModalTime').textContent = inc.detected;
+            document.getElementById('incModalDevice').textContent = inc.device;
+            document.getElementById('incModalLocation').textContent = inc.location;
+            document.getElementById('incModalDesc').textContent = inc.description;
+            document.getElementById('incModalAction').textContent = inc.recommended;
+
+            // Set buttons
+            const btnResolve = document.getElementById('incModalBtnResolve');
+            const btnInvestigate = document.getElementById('incModalBtnInvestigate');
+
+            if (inc.status === 'Resolved') {
+                btnResolve.style.display = 'none';
+                btnInvestigate.style.display = 'none';
+            } else {
+                btnResolve.style.display = 'block';
+                btnResolve.onclick = () => triggerResolve(inc.id);
+                btnInvestigate.style.display = 'block';
+                btnInvestigate.onclick = () => triggerInvestigate(inc.id);
+            }
+
+            openModal('incidentModal');
+        };
+
+        window.triggerDeviceDetails = function (id) {
+            const dev = devices.find(d => d.id === id);
+            if (!dev) return;
+
+            document.getElementById('devModalName').textContent = dev.name;
+            document.getElementById('devModalOS').textContent = dev.os;
+
+            const score = document.getElementById('devModalScore');
+            score.textContent = `${dev.score}%`;
+            score.style.color = dev.status === 'Protected' ? 'var(--green)' : 'var(--red)';
+
+            document.getElementById('devModalLastScan').textContent = dev.lastScan;
+            document.getElementById('devModalFirewall').textContent = dev.firewall;
+            document.getElementById('devModalAntivirus').textContent = dev.antivirus;
+            document.getElementById('devModalEncryption').textContent = dev.encryption;
+            document.getElementById('devModalNetwork').textContent = dev.network;
+            document.getElementById('devModalActivity').textContent = dev.activity;
+
+            const risk = document.getElementById('devModalRisk');
+            risk.className = `severity ${dev.risk.toLowerCase() === 'low' ? 'low' : 'medium'}`;
+            risk.textContent = dev.risk;
+
+            // Set buttons
+            document.getElementById('devModalBtnScan').onclick = () => {
+                triggerDeviceScan(dev.id);
+                closeModal('deviceModal');
+            };
+
+            document.getElementById('devModalBtnRename').onclick = () => {
+                const newName = prompt(`Rename ${dev.name}:`, dev.name);
+                if (newName && newName.trim() !== '') {
+                    dev.name = newName.trim();
+                    showToast(`Device renamed to ${dev.name} ✓`);
+                    renderDevices();
+                    triggerDeviceDetails(dev.id);
+                }
+            };
+
+            document.getElementById('devModalBtnRemove').onclick = () => {
+                const confirmText = document.getElementById('confirmModalText');
+                confirmText.textContent = `Are you sure you want to remove ${dev.name} from protected devices? This action cannot be undone.`;
+
+                document.getElementById('confirmModalBtnYes').onclick = () => {
+                    const index = devices.findIndex(d => d.id === dev.id);
+                    if (index !== -1) {
+                        devices.splice(index, 1);
+                        showToast(`Device removed successfully ✓`, 'error');
+                        renderDevices();
+                        closeModal('confirmModal');
+                        closeModal('deviceModal');
+                    }
+                };
+
+                openModal('confirmModal');
+            };
+
+            openModal('deviceModal');
+        };
+
+        window.triggerActivityDetails = function (id) {
+            const act = activities.find(a => a.id === id);
+            if (!act) return;
+
+            alert(
+                `Activity Event Details:\n\n` +
+                `• Event: ${act.event}\n` +
+                `• Device: ${act.device}\n` +
+                `• Location: ${act.location}\n` +
+                `• Time: ${act.time}\n` +
+                `• Status: ${act.status}\n` +
+                `• Category: ${act.type.toUpperCase()}`
+            );
+        };
+
+        // SYSTEM SCAN ANIMATION
+        let isScanning = false;
+        function runOverviewScan() {
+            if (isScanning) return;
+            isScanning = true;
+
+            const btn = document.querySelector('.btn-run-scan-overview');
+            const card = document.getElementById('securityScanCard');
+            const status = document.getElementById('scanStatus');
+            const barContainer = document.getElementById('scanProgressBarContainer');
+            const bar = document.getElementById('scanProgressBar');
+            const text = document.getElementById('scanProgressText');
+
+            if (btn) btn.disabled = true;
+            if (status) {
+                status.textContent = 'Scanning...';
+                status.className = 'severity warning';
+            }
+            if (barContainer) barContainer.style.display = 'block';
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                if (bar) bar.style.width = `${progress}%`;
+                if (text) text.textContent = `Scanning system... ${progress}%`;
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+
+                    // Scan Complete
+                    setTimeout(() => {
+                        if (barContainer) barContainer.style.display = 'none';
+                        if (status) {
+                            status.textContent = 'Scan Complete ✓';
+                            status.className = 'severity low';
+                        }
+                        if (btn) btn.disabled = false;
+
+                        document.getElementById('lastScanTime').textContent = 'Just now';
+                        document.getElementById('scanResult').textContent = 'No Critical Threats';
+                        document.getElementById('scanItemsChecked').textContent = '142';
+                        document.getElementById('scanRecommendations').textContent = '01';
+
+                        showToast('Security scan completed successfully ✓');
+                        isScanning = false;
+                    }, 500);
+                }
+            }, 100);
+        }
+
+        // INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render initial tables and grids
+            renderIncidents();
+            renderDevices();
+            renderActivityLogs();
+
+            // 1. Hook search inputs
+            const searchInc = document.getElementById('searchIncidents');
+            if (searchInc) {
+                searchInc.addEventListener('input', (e) => {
+                    incSearch = e.target.value;
+                    renderIncidents();
+                });
+            }
+
+            const searchDev = document.getElementById('searchDevices');
+            if (searchDev) {
+                searchDev.addEventListener('input', (e) => {
+                    devSearch = e.target.value;
+                    renderDevices();
+                });
+            }
+
+            const searchAct = document.getElementById('searchActivity');
+            if (searchAct) {
+                searchAct.addEventListener('input', (e) => {
+                    actSearch = e.target.value;
+                    renderActivityLogs();
+                });
+            }
+
+            // 2. Hook sort select elements
+            const sortIncEl = document.getElementById('sortIncidents');
+            if (sortIncEl) {
+                sortIncEl.addEventListener('change', (e) => {
+                    incSort = e.target.value;
+                    renderIncidents();
+                });
+            }
+
+            const sortActEl = document.getElementById('sortActivity');
+            if (sortActEl) {
+                sortActEl.addEventListener('change', (e) => {
+                    actSort = e.target.value;
+                    renderActivityLogs();
+                });
+            }
+
+            // 3. Hook filter button click handlers
+            const hookFilters = (containerId, callback) => {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                container.querySelectorAll('button[data-filter]').forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        container.querySelectorAll('button[data-filter]').forEach(b => {
+                            b.classList.remove('active-filter');
+                        });
+                        this.classList.add('active-filter');
+
+                        callback(this.dataset.filter);
+                    });
+                });
+            };
+
+            hookFilters('incidentFilters', (filter) => {
+                incFilter = filter;
+                showToast(`Incidents filtered ✓`);
+                renderIncidents();
+            });
+
+            hookFilters('deviceFilters', (filter) => {
+                devFilter = filter;
+                showToast(`Devices filtered ✓`);
+                renderDevices();
+            });
+
+            hookFilters('activityFilters', (filter) => {
+                actFilter = filter;
+                showToast(`Activity filtered ✓`);
+                renderActivityLogs();
+            });
+
+            // Clear activity filters button
+            const btnClearAct = document.getElementById('btnClearActivityFilters');
+            if (btnClearAct) {
+                btnClearAct.addEventListener('click', () => {
+                    actFilter = 'all';
+                    actSearch = '';
+
+                    const searchInput = document.getElementById('searchActivity');
+                    if (searchInput) searchInput.value = '';
+
+                    const filtersContainer = document.getElementById('activityFilters');
+                    if (filtersContainer) {
+                        filtersContainer.querySelectorAll('button[data-filter]').forEach(b => {
+                            b.classList.remove('active-filter');
+                            if (b.dataset.filter === 'all') b.classList.add('active-filter');
+                        });
+                    }
+
+                    showToast(`Filters cleared ✓`);
+                    renderActivityLogs();
+                });
+            }
+
+            // Export Activity Button
+            const btnExportAct = document.getElementById('btnExportActivity');
+            if (btnExportAct) {
+                btnExportAct.addEventListener('click', () => {
+                    showToast('Report generated successfully ✓');
+                });
+            }
+
+            // 4. Hook scanning buttons
+            const btnOverviewScanEl = document.querySelector('.btn-run-scan-overview');
+            if (btnOverviewScanEl) {
+                btnOverviewScanEl.addEventListener('click', runOverviewScan);
+            }
+
+            const btnQuickScanEl = document.querySelector('.btn-quick-scan');
+            if (btnQuickScanEl) {
+                btnQuickScanEl.addEventListener('click', () => {
+                    openSection('security');
+                    setTimeout(runOverviewScan, 300);
+                });
+            }
+
+            // Check Security Status Button
+            const btnCheckStatusEl = document.querySelector('.btn-quick-status');
+            if (btnCheckStatusEl) {
+                btnCheckStatusEl.addEventListener('click', () => {
+                    showToast('Security status is healthy. No actions required. ✓');
+                });
+            }
+
+            // Checklist complete & review settings buttons
+            const btnCheckComplete = document.querySelector('.btn-checklist-complete');
+            if (btnCheckComplete) {
+                btnCheckComplete.addEventListener('click', () => {
+                    showToast('Checklist verification completed ✓');
+                });
+            }
+
+            const btnCheckReview = document.querySelector('.btn-checklist-review');
+            if (btnCheckReview) {
+                btnCheckReview.addEventListener('click', () => {
+                    showToast('Privacy & security configuration is secure ✓');
+                });
+            }
+
+            // Improve Security & Recommendations
+            const btnAction2fa = document.querySelector('.btn-action-2fa');
+            if (btnAction2fa) {
+                btnAction2fa.addEventListener('click', () => {
+                    showToast('Two-Factor Authentication enabled ✓');
+                });
+            }
+
+            const btnActionPwd = document.querySelector('.btn-action-pwd');
+            if (btnActionPwd) {
+                btnActionPwd.addEventListener('click', () => {
+                    showToast('Password updated successfully ✓');
+                });
+            }
+
+            const btnRecImprove = document.querySelector('.btn-rec-improve');
+            if (btnRecImprove) {
+                btnRecImprove.addEventListener('click', () => {
+                    showToast('System optimization performed successfully ✓');
+                });
+            }
+        });
+
+        const savedUserName =
+            localStorage.getItem("userName");
+
+        const displayName =
+            savedUserName
+                ? savedUserName
+                    .split(/[._-]/)
+                    .map(word =>
+                        word.charAt(0).toUpperCase() +
+                        word.slice(1)
+                    )
+                    .join(" ")
+                : "Security User";
+
+
+        document.getElementById(
+            "welcomeName"
+        ).textContent = displayName;
+
+
+        document.getElementById(
+            "sidebarUserName"
+        ).textContent = displayName;
+
+
+        /* AVATAR */
+
+        const initials =
+            displayName
+                .split(" ")
+                .map(word => word.charAt(0))
+                .slice(0, 2)
+                .join("")
+                .toUpperCase();
+
+
+        document.getElementById(
+            "avatar"
+        ).textContent = initials;
+
+
+        /* =====================================================
+           SIDEBAR NAVIGATION
+        ===================================================== */
+
+        const navItems =
+            document.querySelectorAll(".nav-item[data-section]");
+
+        const sections =
+            document.querySelectorAll(".section");
+
+        const topTitle =
+            document.getElementById("topTitle");
+
+        const topSubtitle =
+            document.getElementById("topSubtitle");
+
+
+        const pageInfo = {
+
+            dashboard: {
+                title: "Security Dashboard",
+                subtitle: "Real-time protection & system intelligence"
+            },
+
+            security: {
+                title: "Security Overview",
+                subtitle: "Complete security posture and protection controls"
+            },
+
+            threats: {
+                title: "Threat Detection",
+                subtitle: "Monitor suspicious activity and security threats"
+            },
+
+            incidents: {
+                title: "Security Incidents",
+                subtitle: "Track and investigate active security incidents"
+            },
+
+            vulnerabilities: {
+                title: "Vulnerabilities",
+                subtitle: "Identify and prioritize security weaknesses"
+            },
+
+            devices: {
+                title: "Protected Devices",
+                subtitle: "Monitor connected devices and endpoints"
+            },
+
+            activity: {
+                title: "Activity Logs",
+                subtitle: "Review recent security and authentication events"
+            },
+
+            reports: {
+                title: "Security Reports",
+                subtitle: "Security intelligence and compliance reports"
+            },
+
+            settings: {
+                title: "Security Settings",
+                subtitle: "Manage account and protection preferences"
+            }
+
+        };
+
+
+        function openSection(sectionId) {
+
+            sections.forEach(section => {
+
+                section.classList.remove("active");
+
+            });
+
+
+            const target =
+                document.getElementById(sectionId);
+
+            if (target) {
+                target.classList.add("active");
+            }
+
+
+            navItems.forEach(item => {
+
+                item.classList.remove("active");
+
+                if (
+                    item.dataset.section === sectionId
+                ) {
+                    item.classList.add("active");
+                }
+
+            });
+
+
+            if (pageInfo[sectionId]) {
+
+                topTitle.textContent =
+                    pageInfo[sectionId].title;
+
+                topSubtitle.textContent =
+                    pageInfo[sectionId].subtitle;
+
+            }
+
+
+            document.getElementById(
+                "sidebar"
+            ).classList.remove("open");
+
+            document.getElementById(
+                "sidebarOverlay"
+            ).classList.remove("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        navItems.forEach(item => {
+
+            item.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    openSection(
+                        this.dataset.section
+                    );
+
+                }
+            );
+
+        });
+
+
+        /* =====================================================
+           DASHBOARD INTERNAL LINKS
+        ===================================================== */
+
+        document.querySelectorAll(
+            "[data-open]"
+        ).forEach(link => {
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    openSection(
+                        this.dataset.open
+                    );
+
+                }
+            );
+
+        });
+
+
+        /* =====================================================
+           MOBILE SIDEBAR
+        ===================================================== */
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const sidebarOverlay =
+            document.getElementById("sidebarOverlay");
+
+
+        mobileMenu.addEventListener(
+            "click",
+            () => {
+
+                sidebar.classList.add("open");
+
+                sidebarOverlay.classList.add("active");
+
+            }
+        );
+
+
+        sidebarOverlay.addEventListener(
+            "click",
+            () => {
+
+                sidebar.classList.remove("open");
+
+                sidebarOverlay.classList.remove("active");
+
+            }
+        );
+
+
+        /* =====================================================
+           NOTIFICATION
+        ===================================================== */
+
+        document.getElementById(
+            "notificationBtn"
+        ).addEventListener(
+            "click",
+            () => {
+
+                alert(
+                    "You have 2 security notifications:\n\n" +
+                    "• Suspicious login attempt blocked\n" +
+                    "• Security scan completed successfully"
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           REPORT
+        ===================================================== */
+
+        function generateReport(reportName) {
+
+            alert(
+                reportName +
+                " is being prepared.\n\n" +
+                "Your security report will be available shortly."
+            );
+
+        }
+
+
+        /* =====================================================
+           SETTINGS TOGGLE
+        ===================================================== */
+
+        document.querySelectorAll(
+            ".toggle"
+        ).forEach(toggle => {
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+                    this.classList.toggle("disabled");
+
+                    if (
+                        this.classList.contains("disabled")
+                    ) {
+
+                        this.style.background =
+                            "rgba(255,255,255,.10)";
+
+                        this.style.opacity = ".55";
+
+                    } else {
+
+                        this.style.background =
+                            "var(--green)";
+
+                        this.style.opacity = "1";
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        document.getElementById(
+            "logoutBtn"
+        ).addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                const confirmLogout =
+                    confirm(
+
+                    );
+
+                if (!confirmLogout) {
+                    return;
+                }
+
+
+                localStorage.removeItem(
+                    "userLoggedIn"
+                );
+
+                localStorage.removeItem(
+                    "isLoggedIn"
+                );
+
+                localStorage.removeItem(
+                    "accountType"
+                );
+
+                localStorage.removeItem(
+                    "userName"
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>

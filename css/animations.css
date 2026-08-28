@@ -1,0 +1,505 @@
+/* =========================================================
+   STACKLY SECURITY — PREMIUM ANIMATION SYSTEM
+   animations.css
+========================================================= */
+
+/* Progressive Enhancement: Initial states only apply if JS is active */
+.js .reveal,
+.js .reveal-up,
+.js .reveal-left,
+.js .reveal-right,
+.js .image-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.js .reveal-up {
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .reveal-left {
+    transform: translateX(-24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .reveal-right {
+    transform: translateX(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .reveal {
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .image-reveal {
+    overflow: hidden;
+    position: relative;
+    transform: scale(1.03);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .image-reveal img {
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active states (triggered by IntersectionObserver or page load) */
+.reveal.active,
+.reveal-up.active,
+.reveal-left.active,
+.reveal-right.active,
+.image-reveal.active {
+    opacity: 1 !important;
+    transform: translate(0) scale(1) !important;
+}
+
+.image-reveal.active img {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+/* Hero Staggered Animation Delays */
+.hero-eyebrow.reveal-up {
+    transition-delay: 150ms;
+}
+.hero-title.letter-reveal {
+    transition-delay: 300ms;
+}
+.hero-description.reveal-up {
+    transition-delay: 500ms;
+}
+.hero-buttons.reveal-up {
+    transition-delay: 650ms;
+}
+.hero-trust.reveal-up {
+    transition-delay: 800ms;
+}
+.hero-floating-card.reveal-right {
+    transition-delay: 950ms;
+}
+
+/* Letter reveal styles */
+.js .letter-reveal .reveal-char {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.letter-reveal.active .reveal-char {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+
+/* =========================================================
+   PRELOADER REDESIGN
+========================================================= */
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    
+    display: grid;
+    place-items: center;
+    
+    background: #030608;
+    
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.preloader-visual {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    
+    display: grid;
+    place-items: center;
+}
+
+.preloader-icon-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.preloader-icon {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 10px rgba(57, 255, 136, 0.4));
+}
+
+/* Concentric rotating technical rings */
+.preloader-ring-outer {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    
+    border: 1.5px dashed rgba(57, 255, 136, 0.22);
+    border-radius: 50%;
+    
+    animation: preloaderRotateClockwise 12s linear infinite;
+}
+
+.preloader-ring-inner {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    
+    border: 1px solid rgba(72, 223, 255, 0.15);
+    border-top: 2px solid var(--cyan);
+    border-bottom: 2px solid var(--cyan);
+    border-radius: 50%;
+    
+    animation: preloaderRotateCounterClockwise 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Vertically scanning radar line */
+.preloader-scan-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    
+    background: linear-gradient(180deg, transparent, var(--cyber), transparent);
+    box-shadow: 0 0 8px var(--cyber);
+    
+    opacity: 0.85;
+    
+    animation: preloaderScanVertical 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Minimal status indicator */
+.preloader-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    padding: 6px 16px;
+    
+    background: rgba(8, 16, 22, 0.75);
+    border: 1px solid rgba(57, 255, 136, 0.15);
+    border-radius: 20px;
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.preloader-status .status-dot {
+    width: 6px;
+    height: 6px;
+    
+    background-color: var(--cyber);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--cyber);
+    
+    animation: preloaderStatusPulse 1.5s ease-in-out infinite;
+}
+
+.preloader-status .status-text {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #aab8bd;
+}
+
+/* Keyframes for preloader */
+@keyframes preloaderRotateClockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes preloaderRotateCounterClockwise {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes preloaderScanVertical {
+    0% { top: -10%; }
+    50% { top: 110%; }
+    100% { top: -10%; }
+}
+
+@keyframes preloaderStatusPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+
+/* =========================================================
+   CARDS HOVER ANIMATIONS
+========================================================= */
+.service-card,
+.why-card,
+.service-detail-card,
+.career-value-card,
+.job-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.service-card:hover,
+.why-card:hover,
+.service-detail-card:hover,
+.career-value-card:hover,
+.job-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: rgba(57, 255, 136, 0.35) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 15px rgba(57, 255, 136, 0.02) !important;
+}
+
+/* Specific icon shifts inside cards */
+.service-card:hover .service-icon,
+.why-card:hover .why-card-icon,
+.service-detail-card:hover .service-icon,
+.career-value-card:hover .career-value-icon {
+    transform: translateY(-2px) scale(1.03) !important;
+    color: var(--cyber) !important;
+    border-color: rgba(57, 255, 136, 0.4) !important;
+    background: rgba(57, 255, 136, 0.08) !important;
+}
+
+/* Card link arrow shifts on hover */
+.service-card:hover .service-link i,
+.why-card:hover .card-link i,
+.service-detail-card:hover .service-link i,
+.job-card:hover .job-link i {
+    transform: translateX(5px) !important;
+}
+
+.service-link i,
+.card-link i,
+.job-link i {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+
+/* =========================================================
+   BUTTON HOVER & TRANSITIONS
+========================================================= */
+.btn {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn:hover {
+    transform: translateY(-2px) !important;
+}
+
+.btn:active {
+    transform: translateY(0) !important;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--cyber) !important;
+    outline-offset: 3px !important;
+}
+
+
+/* =========================================================
+   PREMIUM CYBERSECURITY ANIMATION SYSTEM (SHARED)
+========================================================= */
+
+/* Reveal Security Card State */
+.js .reveal-security-card {
+    opacity: 0;
+    transform: translate3d(60px, 0, 0) scale(0.96);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.reveal-security-card.active {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) scale(1) !important;
+    /* Delay the float animation until reveal transition finishes (1.2s) */
+    animation: floatingCard 8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.2s infinite alternate;
+}
+
+/* Keyframes for Floating Card (with dynamic shadow movement) */
+@keyframes floatingCard {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        box-shadow:
+            0 30px 80px rgba(0,0,0,0.4),
+            inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    50% {
+        transform: translate3d(8px, -14px, 0) rotate(0.5deg);
+        box-shadow:
+            0 45px 95px rgba(0,0,0,0.48),
+            inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    100% {
+        transform: translate3d(-5px, -24px, 0) rotate(-0.5deg);
+        box-shadow:
+            0 55px 110px rgba(0,0,0,0.52),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+}
+
+/* Keyframes for Soft Security Glow */
+@keyframes securityGlow {
+    0% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.65;
+        transform: scale(1.08);
+    }
+    100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+}
+
+/* Keyframes for Laser Scan Sweep Line */
+@keyframes securityScan {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.7;
+    }
+    85% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(270px); /* Height of the threat visual area */
+        opacity: 0;
+    }
+}
+
+/* Slow Cinematic Grid Panning */
+@keyframes gridMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 70px 70px;
+    }
+}
+
+/* Lightweight Floating Particles */
+@keyframes particleFloatOne {
+    0% { transform: translate3d(0, 0, 0); opacity: 0.2; }
+    50% { opacity: 0.6; }
+    100% { transform: translate3d(15px, -20px, 0); opacity: 0.2; }
+}
+@keyframes particleFloatTwo {
+    0% { transform: translate3d(0, 0, 0); opacity: 0.3; }
+    50% { opacity: 0.7; }
+    100% { transform: translate3d(-20px, -15px, 0); opacity: 0.3; }
+}
+@keyframes particleFloatThree {
+    0% { transform: translate3d(0, 0, 0); opacity: 0.15; }
+    50% { opacity: 0.5; }
+    100% { transform: translate3d(-10px, 25px, 0); opacity: 0.15; }
+}
+@keyframes particleFloatFour {
+    0% { transform: translate3d(0, 0, 0); opacity: 0.25; }
+    50% { opacity: 0.65; }
+    100% { transform: translate3d(20px, 15px, 0); opacity: 0.25; }
+}
+
+
+/* =========================================================
+   REDUCED MOTION SUPPORT
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal,
+    .js .reveal-up,
+    .js .reveal-left,
+    .js .reveal-right,
+    .js .reveal-security-card,
+    .js .image-reveal,
+    .js .image-reveal img,
+    .js .letter-reveal .reveal-char {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .reveal-security-card.active {
+        animation: none !important;
+    }
+
+    .hero-floating-card {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    .preloader {
+        display: none !important;
+    }
+    
+    .preloader-ring-outer,
+    .preloader-ring-inner,
+    .preloader-scan-line,
+    .preloader-status .status-dot {
+        animation: none !important;
+    }
+    
+    .btn,
+    .service-card,
+    .why-card,
+    .service-detail-card,
+    .career-value-card,
+    .job-card,
+    .site-header {
+        transition: none !important;
+        transform: none !important;
+    }
+    
+    .service-card:hover,
+    .why-card:hover,
+    .service-detail-card:hover,
+    .career-value-card:hover,
+    .job-card:hover,
+    .btn:hover {
+        transform: none !important;
+    }
+    
+    .service-card:hover .service-icon,
+    .why-card:hover .why-card-icon,
+    .service-card:hover .service-link i,
+    .why-card:hover .card-link i,
+    .btn:hover i {
+        transform: none !important;
+    }
+}

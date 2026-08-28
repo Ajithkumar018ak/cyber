@@ -1,0 +1,127 @@
+/* =========================================================
+   STACKLY SECURITY — RESPONSIVE OVERRIDES
+   responsive.css
+========================================================= */
+
+/* Adjust scroll padding to prevent fixed navbar from overlapping anchors */
+html {
+    scroll-padding-top: 96px;
+}
+
+@media (max-width: 900px) {
+    html {
+        scroll-padding-top: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+}
+
+/* Ensure body doesn't overflow horizontally */
+body {
+    overflow-x: hidden;
+}
+
+/* Header & Navbar adjustments when scrolling and fixed */
+.site-header {
+    position: fixed !important; /* Ensure fixed position */
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.site-header .navbar {
+    transition: min-height 0.35s ease, padding 0.35s ease;
+}
+
+/* Scrolled compact treatment */
+.site-header.scrolled .navbar {
+    min-height: 68px !important;
+}
+
+/* Toggle mobile navbar elements on tablet/mobile screens */
+@media (max-width: 991px) {
+    .desktop-navigation,
+    .security-status,
+    .login-link {
+        display: none !important;
+    }
+    
+    .menu-toggle {
+        display: flex !important;
+    }
+}
+
+/* Mobile responsive menu alignments */
+@media (max-width: 768px) {
+    .site-header .navbar {
+        min-height: 74px;
+        width: min(1400px, calc(100% - 32px));
+    }
+    
+    .site-header.scrolled .navbar {
+        min-height: 60px !important;
+    }
+    
+    .brand-main {
+        font-size: 18px !important;
+    }
+    
+    .brand-sub {
+        font-size: 7.5px !important;
+    }
+    
+    /* Ensure no overlapping of hero elements */
+    .hero-container {
+        padding-top: 110px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header .navbar {
+        width: min(1400px, calc(100% - 24px));
+    }
+    
+    .hero-container {
+        padding-top: 96px !important;
+    }
+    
+    /* Clamp large text values to prevent overflow */
+    .hero-title {
+        font-size: clamp(32px, 9vw, 46px) !important;
+        letter-spacing: -1px !important;
+    }
+    
+    .section-title {
+        font-size: clamp(24px, 7vw, 36px) !important;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* General improvements to grids and layouts */
+.intro-grid,
+.services-grid,
+.why-grid,
+.process-grid,
+.careers-grid,
+.contact-grid {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}

@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="STACKLY Security provides advanced network security, cloud security, application security, threat intelligence, vulnerability assessment and SOC monitoring."
+    >
+
+    <meta
+        name="keywords"
+        content="cybersecurity services, network security, cloud security, application security, threat intelligence, SOC monitoring"
+    >
+
+    <meta
+        name="author"
+        content="STACKLY Security"
+    >
+
+    <title>
+        STACKLY Security — Cybersecurity Services
+    </title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- MAIN CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/animations.css"
+    >
+
+
+    <!-- FONT AWESOME -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <script>document.documentElement.classList.add('js');</script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     CYBERSECURITY PRELOADER
+========================================================= -->
+<div class="preloader" id="preloader" aria-label="Security system booting">
+    <div class="preloader-content">
+        <div class="preloader-visual">
+            <div class="preloader-ring-outer"></div>
+            <div class="preloader-ring-inner"></div>
+            <div class="preloader-icon-container">
+                <svg class="preloader-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 12L20 25V48C20 68.2 32.8 83.2 50 88C67.2 83.2 80 68.2 80 48V25L50 12Z" stroke="var(--cyber)" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+                    <path d="M50 30L34 39.2V57.7L50 67L66 57.7V39.2L50 30Z" stroke="var(--cyber)" stroke-width="1.5" stroke-dasharray="4 2" fill="none" opacity="0.6"/>
+                    <path d="M50 42C47.8 42 46 43.8 46 46V49H44V56H56V49H54V46C54 43.8 52.2 42 50 42ZM48 46C48 44.9 48.9 44 50 44C51.1 44 52 44.9 52 46V49H48V46Z" fill="var(--cyber)"/>
+                </svg>
+                <div class="preloader-scan-line"></div>
+            </div>
+        </div>
+        <div class="preloader-status">
+            <span class="status-dot"></span>
+            <span class="status-text">SECURE BOOT ACTIVE</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header
+    class="site-header"
+    id="siteHeader"
+>
+
+    <nav class="navbar">
+
+
+        <!-- BRAND -->
+
+       <a href="index.html" class="brand-logo">
+    <img 
+        src="assets/logo.webp" 
+        alt="STACKLY Security Logo"
+        class="brand-logo-img"
+    >
+</a>
+
+
+
+        <!-- DESKTOP NAV -->
+
+        <div class="desktop-navigation">
+
+            <a
+                href="index.html"
+                class="nav-link"
+            >
+                Home
+            </a>
+
+            <a
+                href="about.html"
+                class="nav-link"
+            >
+                About
+            </a>
+
+            <a
+                href="services.html"
+                class="nav-link active"
+            >
+                Services
+            </a>
+
+          
+
+            <a
+                href="career.html"
+                class="nav-link"
+            >
+                Careers
+            </a>
+
+            <a
+                href="contact.html"
+                class="nav-link"
+            >
+                Contact
+            </a>
+
+        </div>
+
+
+
+        <!-- SECURITY STATUS -->
+
+        <div class="security-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                SYSTEM SECURE
+            </span>
+
+        </div>
+
+
+
+        <!-- LOGIN -->
+
+        <a
+            href="login.html"
+            class="login-link"
+        >
+            Login
+        </a>
+
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE SIDEBAR
+========================================================= -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<aside
+    class="mobile-sidebar"
+    id="mobileSidebar"
+>
+
+    <div class="mobile-sidebar-header">
+
+        <div class="mobile-brand">
+
+            STACKLY
+
+            <span>
+                SECURITY
+            </span>
+
+        </div>
+
+
+        <button
+            class="mobile-close"
+            id="mobileClose"
+            aria-label="Close navigation"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+    <div class="mobile-menu">
+
+        <a href="index.html">
+
+            <span>01</span>
+
+            Home
+
+        </a>
+
+
+        <a href="about.html">
+
+            <span>02</span>
+
+            About
+
+        </a>
+
+
+        <a
+            href="services.html"
+            class="active"
+        >
+
+            <span>03</span>
+
+            Services
+
+        </a>
+
+
+      
+
+
+        <a href="career.html">
+
+            <span>05</span>
+
+            Careers
+
+        </a>
+
+
+        <a href="contact.html">
+
+            <span>06</span>
+
+            Contact
+
+        </a>
+
+
+        <a
+            href="login.html"
+            class="mobile-login-btn"
+        >
+
+            <span>→</span>
+
+            Security Portal
+
+        </a>
+
+    </div>
+
+
+    <div class="mobile-sidebar-footer">
+
+        <a href="tel:+919876543210">
+
+            <i class="fa-solid fa-phone"></i>
+
+            <span>
+                +91 98765 43210
+            </span>
+
+        </a>
+
+
+        <a href="mailto:security@stackly.com">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <span>
+                security@stackly.com
+            </span>
+
+        </a>
+
+
+        <a href="404.html">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <span>
+                Tamil Nadu, India
+            </span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     SERVICES HERO
+========================================================= -->
+
+<section
+    class="inner-hero services-page-hero services-hero"
+>
+
+
+    <!-- BACKGROUND -->
+
+    <div class="inner-hero-background">
+
+        <img
+            src="assets/s1.webp"
+            alt="Cybersecurity operations and threat monitoring"
+            class="inner-hero-image"
+        >
+
+    </div>
+
+
+    <div class="inner-hero-overlay"></div>
+
+
+    <!-- CYBER GRID -->
+
+    <div class="cyber-grid"></div>
+
+
+    <!-- SCAN LINE -->
+
+    <div class="hero-scan-line"></div>
+
+
+    <div class="section-container inner-hero-grid">
+
+        <div class="inner-hero-content">
+
+            <div class="hero-eyebrow reveal-up">
+
+                <span class="eyebrow-line"></span>
+
+                <span>
+                    01 · SECURITY SERVICES
+                </span>
+
+            </div>
+
+
+            <h1 class="hero-title letter-reveal">
+
+                Security
+                <span>
+                    Without Compromise.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description reveal-up">
+
+                Advanced cybersecurity services designed to
+                identify threats, protect infrastructure and
+                keep your business ready for what comes next.
+
+            </p>
+
+
+            <div class="inner-hero-meta hero-trust reveal-up">
+
+                <span>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    PROTECTION
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-radar"></i>
+                    DETECTION
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-bolt"></i>
+                    RESPONSE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CYBER SECURITY SERVICES CARD
+        ================================================== -->
+
+        <div
+            class="hero-floating-card cyber-card reveal-security-card"
+        >
+
+
+            <div class="cyber-card-header">
+
+                <span>
+                    SERVICES STATUS
+                </span>
+
+                <span class="live-status">
+
+                    <span></span>
+
+                    ACTIVE
+
+                </span>
+
+            </div>
+
+
+
+            <!-- THREAT VISUAL -->
+
+            <div class="threat-visual">
+
+                <!-- CYBER PARTICLES -->
+                <div class="cyber-particles">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- SCAN LINE -->
+                <div class="threat-scan-line"></div>
+
+                <div class="threat-grid">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <div class="threat-core">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                </div>
+
+
+                <div class="scan-ring scan-ring-one"></div>
+
+                <div class="scan-ring scan-ring-two"></div>
+
+            </div>
+
+
+
+            <!-- SECURITY METRICS -->
+
+            <div class="security-metrics">
+
+
+                <div class="security-metric">
+
+                    <span>
+                        SERVICES ACTIVE
+                    </span>
+
+                    <strong>
+                        12
+                    </strong>
+
+                </div>
+
+
+                <div class="security-metric">
+
+                    <span>
+                        HEALTH RATE
+                    </span>
+
+                    <strong class="secure-text">
+                        99.9%
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CARD FOOTER -->
+
+            <div class="cyber-card-footer">
+
+                <span>
+                    <i class="fa-solid fa-circle-check"></i>
+                    All services operational
+                </span>
+
+                <strong>
+                    SECURE
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="inner-hero-bottom">
+
+        <span>
+            STACKLY SECURITY
+        </span>
+
+        <span>
+            SECURITY SERVICES · 24 / 7
+        </span>
+
+        <span>
+            EXPLORE SERVICES
+            <i class="fa-solid fa-arrow-down"></i>
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICES INTRO
+========================================================= -->
+
+<section class="services-intro section-light">
+
+    <div class="section-container">
+
+        <div class="section-heading-row reveal-up">
+
+            <div class="section-label">
+
+                <span>
+                    02
+                </span>
+
+                WHAT WE DO
+
+            </div>
+
+
+            <div class="section-heading">
+
+                <h2 class="letter-reveal">
+
+                    Security designed
+                    <em>for real-world threats.</em>
+
+                </h2>
+
+
+                <p>
+
+                    Modern organizations face a constantly
+                    changing threat landscape. STACKLY Security
+                    combines proactive protection, continuous
+                    monitoring and intelligent response to create
+                    a stronger security foundation.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="service-feature-layout">
+
+
+            <!-- IMAGE -->
+
+            <div
+                class="service-feature-image image-reveal"
+            >
+
+                <img
+                    src="assets/s2.webp"
+                    alt="Cybersecurity specialist monitoring threats"
+                    loading="lazy"
+                >
+
+
+                <div class="service-image-overlay">
+
+                    <span>
+                        SECURITY OPERATIONS
+                    </span>
+
+                    <strong>
+                        24 / 7
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTENT -->
+
+            <div class="service-feature-content reveal-right">
+
+                <span class="feature-index">
+                    01 / 06
+                </span>
+
+
+                <h3>
+                    One security strategy.
+                    Multiple layers of defense.
+                </h3>
+
+
+                <p>
+
+                    From your network perimeter to cloud
+                    infrastructure and applications, our
+                    security services are designed to work
+                    together as one defensive ecosystem.
+
+                </p>
+
+
+                <div class="service-feature-points">
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Proactive threat detection
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Continuous security monitoring
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Risk-focused protection
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Incident response readiness
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECURITY SERVICES GRID
+========================================================= -->
+
+<section class="services-detail-section section-dark">
+
+    <div class="section-container">
+
+
+        <div class="services-heading reveal-up">
+
+            <div>
+
+                <span class="section-label light">
+
+                    03 · OUR SERVICES
+
+                </span>
+
+
+                <h2 class="letter-reveal">
+
+                    Protect every
+                    <em>attack surface.</em>
+
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Layered cybersecurity services that help
+                organizations reduce risk, improve visibility
+                and respond confidently to security incidents.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="services-detail-grid">
+
+
+            <!-- 01 -->
+
+            <article
+                class="service-detail-card reveal-up"
+                style="transition-delay: 100ms;"
+            >
+
+                <div class="service-detail-top">
+
+                    <span class="service-number">
+                        01
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-network-wired"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Network Security
+                </h3>
+
+
+                <p>
+
+                    Protect critical network infrastructure
+                    from unauthorized access, malicious traffic
+                    and evolving cyber threats.
+
+                </p>
+
+
+                <div class="service-detail-list">
+
+                    <span>
+                        Firewall Protection
+                    </span>
+
+                    <span>
+                        Network Monitoring
+                    </span>
+
+                    <span>
+                        Intrusion Detection
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="404.html"
+                    class="service-detail-link"
+                >
+
+                    Secure Your Network
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- 02 -->
+
+            <article
+                class="service-detail-card reveal-up"
+                style="transition-delay: 200ms;"
+            >
+
+                <div class="service-detail-top">
+
+                    <span class="service-number">
+                        02
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-cloud"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Cloud Security
+                </h3>
+
+
+                <p>
+
+                    Secure cloud infrastructure, workloads and
+                    applications while maintaining visibility
+                    across your digital environment.
+
+                </p>
+
+
+                <div class="service-detail-list">
+
+                    <span>
+                        Cloud Monitoring
+                    </span>
+
+                    <span>
+                        Access Control
+                    </span>
+
+                    <span>
+                        Configuration Security
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="404.html"
+                    class="service-detail-link"
+                >
+
+                    Protect Your Cloud
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- 03 -->
+
+            <article
+                class="service-detail-card reveal-up"
+                style="transition-delay: 300ms;"
+            >
+
+                <div class="service-detail-top">
+
+                    <span class="service-number">
+                        03
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-code"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Application Security
+                </h3>
+
+
+                <p>
+
+                    Identify weaknesses in applications and
+                    strengthen software against common attack
+                    paths and vulnerabilities.
+
+                </p>
+
+
+                <div class="service-detail-list">
+
+                    <span>
+                        Security Testing
+                    </span>
+
+                    <span>
+                        Vulnerability Detection
+                    </span>
+
+                    <span>
+                        Secure Development
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="404.html"
+                    class="service-detail-link"
+                >
+
+                    Secure Your Applications
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- 04 -->
+
+            <article
+                class="service-detail-card reveal-up"
+                style="transition-delay: 100ms;"
+            >
+
+                <div class="service-detail-top">
+
+                    <span class="service-number">
+                        04
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-crosshairs"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Threat Intelligence
+                </h3>
+
+
+                <p>
+
+                    Gain actionable intelligence about emerging
+                    threats and understand how attackers could
+                    target your organization.
+
+                </p>
+
+
+                <div class="service-detail-list">
+
+                    <span>
+                        Threat Analysis
+                    </span>
+
+                    <span>
+                        Risk Intelligence
+                    </span>
+
+                    <span>
+                        Attack Monitoring
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="404.html"
+                    class="service-detail-link"
+                >
+
+                    Explore Threat Intelligence
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- 05 -->
+
+            <article
+                class="service-detail-card reveal-up"
+                style="transition-delay: 200ms;"
+            >
+
+                <div class="service-detail-top">
+
+                    <span class="service-number">
+                        05
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-bug-slash"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Vulnerability Assessment
+                </h3>
+
+
+                <p>
+
+                    Discover security weaknesses across systems,
+                    applications and infrastructure before
+                    attackers can exploit them.
+
+                </p>
+
+
+                <div class="service-detail-list">
+
+                    <span>
+                        Security Assessment
+                    </span>
+
+                    <span>
+                        Risk Identification
+                    </span>
+
+                    <span>
+                        Remediation Guidance
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="404.html"
+                    class="service-detail-link"
+                >
+
+                    Assess Your Security
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- 06 -->
+
+            <article
+                class="service-detail-card reveal-up"
+                style="transition-delay: 300ms;"
+            >
+
+                <div class="service-detail-top">
+
+                    <span class="service-number">
+                        06
+                    </span>
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-headset"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    SOC Monitoring
+                </h3>
+
+
+                <p>
+
+                    Continuous monitoring and security analysis
+                    designed to identify suspicious activity
+                    and accelerate response.
+
+                </p>
+
+
+                <div class="service-detail-list">
+
+                    <span>
+                        24 / 7 Monitoring
+                    </span>
+
+                    <span>
+                        Incident Detection
+                    </span>
+
+                    <span>
+                        Security Response
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="404.html"
+                    class="service-detail-link"
+                >
+
+                    Activate Monitoring
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECURITY CAPABILITIES
+========================================================= -->
+
+<section class="capabilities-section section-light">
+
+    <div class="section-container">
+
+        <div class="capabilities-header reveal">
+
+            <span class="section-label">
+                04 · SECURITY CAPABILITIES
+            </span>
+
+
+            <h2 class="split-title">
+
+                Security that works
+                <em>across every layer.</em>
+
+            </h2>
+
+        </div>
+
+
+        <div class="capabilities-grid">
+
+
+            <div class="capability-item reveal">
+
+                <span>
+                    01
+                </span>
+
+                <div>
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <h3>
+                        Infrastructure Protection
+                    </h3>
+
+                    <p>
+                        Protect critical infrastructure from
+                        unauthorized access and malicious activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="capability-item reveal">
+
+                <span>
+                    02
+                </span>
+
+                <div>
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <h3>
+                        Identity Security
+                    </h3>
+
+                    <p>
+                        Strengthen access controls and reduce
+                        identity-related security risks.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="capability-item reveal">
+
+                <span>
+                    03
+                </span>
+
+                <div>
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <h3>
+                        Data Protection
+                    </h3>
+
+                    <p>
+                        Protect sensitive business information
+                        across your digital environment.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="capability-item reveal">
+
+                <span>
+                    04
+                </span>
+
+                <div>
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    <h3>
+                        Incident Readiness
+                    </h3>
+
+                    <p>
+                        Prepare your organization to respond
+                        effectively when security incidents occur.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECURITY PROCESS
+========================================================= -->
+
+<section class="process-section section-dark">
+
+    <div class="section-container">
+
+        <div class="process-heading reveal">
+
+            <span class="section-label light">
+                05 · OUR APPROACH
+            </span>
+
+
+            <h2 class="split-title">
+
+                Detect.
+                <em>Defend. Evolve.</em>
+
+            </h2>
+
+
+            <p>
+
+                Security is an ongoing process. Our approach
+                helps organizations continuously improve their
+                ability to prevent, detect and respond to threats.
+
+            </p>
+
+        </div>
+
+
+        <div class="process-timeline">
+
+
+            <article class="process-item reveal">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <div class="process-line"></div>
+
+                <div class="process-content">
+
+                    <span>
+                        DISCOVER
+                    </span>
+
+                    <h3>
+                        Understand the environment.
+                    </h3>
+
+                    <p>
+                        Map systems, assets, vulnerabilities
+                        and potential attack surfaces.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="process-item reveal">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <div class="process-line"></div>
+
+                <div class="process-content">
+
+                    <span>
+                        PROTECT
+                    </span>
+
+                    <h3>
+                        Strengthen your defenses.
+                    </h3>
+
+                    <p>
+                        Implement security controls designed
+                        around your organization's specific risks.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="process-item reveal">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <div class="process-line"></div>
+
+                <div class="process-content">
+
+                    <span>
+                        DETECT
+                    </span>
+
+                    <h3>
+                        Monitor what matters.
+                    </h3>
+
+                    <p>
+                        Detect suspicious activity through
+                        continuous monitoring and analysis.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="process-item reveal">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <div class="process-content">
+
+                    <span>
+                        RESPOND
+                    </span>
+
+                    <h3>
+                        Act before threats spread.
+                    </h3>
+
+                    <p>
+                        Respond quickly, contain incidents and
+                        continuously improve your security posture.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="contact-cta-section section-light">
+
+    <div class="section-container">
+
+        <div class="contact-cta-box reveal">
+
+            <div class="contact-cta-content">
+
+                <span class="section-label">
+
+                    06 · START SECURING
+
+                </span>
+
+
+                <h2 class="split-title">
+
+                    Your next defense
+                    <em>starts here.</em>
+
+                </h2>
+
+
+                <p>
+
+                    Talk to our security team about your
+                    infrastructure, risks and cybersecurity
+                    priorities.
+
+                </p>
+
+            </div>
+
+
+            <div class="contact-cta-action">
+
+                <a
+                    href="404.html"
+                    class="btn btn-primary magnetic-btn"
+                >
+
+                    <span>
+                        Talk to Security Team
+                    </span>
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </a>
+
+
+                <span class="contact-cta-note">
+
+                    Confidential security consultation.
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer
+    class="site-footer"
+    id="footer"
+>
+
+    <div class="section-container">
+
+        <div class="footer-main">
+
+
+            <!-- BRAND -->
+
+            <div class="footer-brand reveal">
+<a href="index.html" class="footer-logo">
+    <img 
+        src="assets/logo.webp" 
+        alt="STACKLY Security Logo"
+        class="footer-logo-img"
+    >
+</a>
+
+
+                <p>
+
+                    Advanced cybersecurity solutions designed
+                    to protect modern businesses from evolving
+                    digital threats.
+
+                </p>
+
+
+                <div class="footer-socials">
+
+                    <a
+                        href="404.html"
+                        aria-label="LinkedIn"
+                    >
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                    <a
+                        href="404.html"
+                        aria-label="Instagram"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a
+                        href="404.html"
+                        aria-label="Facebook"
+                    >
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a
+                        href="404.html"
+                        aria-label="YouTube"
+                    >
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- COMPANY -->
+
+            <div class="footer-column reveal">
+
+                <h4>
+                    COMPANY
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="career.html">
+                    Careers
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <!-- SECURITY -->
+
+            <div class="footer-column reveal">
+
+                <h4>
+                    SECURITY
+                </h4>
+
+                <a href="404.html">
+                    Network Security
+                </a>
+
+                <a href="404.html">
+                    Cloud Security
+                </a>
+
+                <a href="404.html">
+                    Threat Intelligence
+                </a>
+
+                <a href="404.html">
+                    SOC Monitoring
+                </a>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div
+                class="footer-column footer-contact reveal"
+            >
+
+                <h4>
+                    SECURITY OPERATIONS
+                </h4>
+
+
+                <address>
+
+                    24 Innovation Avenue<br>
+                    Chennai, Tamil Nadu<br>
+                    India
+
+                </address>
+
+
+                <a href="tel:+919876543210">
+                    +91 98765 43210
+                </a>
+
+
+                <a href="mailto:security@stackly.com">
+                    security@stackly.com
+                </a>
+
+
+                <span>
+                    Security Monitoring · 24 / 7
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <span>
+
+                © 2026 STACKLY Security.
+                All rights reserved.
+
+            </span>
+
+
+            <div>
+
+                <a href="404.html">
+                    Privacy
+                </a>
+
+                <a href="404.html">
+                    Security
+                </a>
+
+                <a href="404.html">
+                    Terms
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top"
+    type="button"
+>
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+
+<!-- =========================================================
+     SCROLL PROGRESS
+========================================================= -->
+
+<div
+    class="scroll-progress"
+    id="scrollProgress"
+    aria-hidden="true"
+></div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="js/navigation.js"></script>
+
+<script src="js/animations.js"></script>
+
+<script src="js/main.js"></script>
+
+
+</body>
+
+</html>
