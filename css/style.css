@@ -371,7 +371,7 @@ ol {
 
     width: 100%;
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: none;
 
     background: rgba(3,8,10,0.55);
 
@@ -379,14 +379,13 @@ ol {
     -webkit-backdrop-filter: blur(16px);
 
     transition:
-        background var(--transition),
-        border-color var(--transition);
+        background var(--transition);
 }
 
 .site-header.scrolled {
     position: fixed;
     background: rgba(3,8,10,0.92);
-    border-bottom-color: rgba(57,255,136,0.12);
+    border-bottom: none;
 }
 
 .navbar {
@@ -1356,7 +1355,7 @@ ol {
     align-items: center;
     gap: 10px;
 
-    color: #61716e;
+    color: #0e0e0e;
 
     font-family: var(--font-mono);
     font-size: 9px;
@@ -1395,7 +1394,7 @@ ol {
 
     margin-top: 28px;
 
-    color: #687874;
+    color: #111111;
 
     font-size: 15px;
     line-height: 1.8;
@@ -1575,7 +1574,7 @@ ol {
 
     margin-top: 9px;
 
-    color: #73817e;
+    color: #040404;
 
     font-family: var(--font-mono);
     font-size: 8px;
@@ -1611,24 +1610,22 @@ ol {
 
 .services-grid {
     margin-top: 75px;
-
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-
-    background: rgba(255,255,255,0.08);
+    gap: 0;
+    row-gap: 0;
+    column-gap: 0;
+    background: transparent;
 }
 
 .service-card {
     position: relative;
-
     min-height: 330px;
-
     padding: 35px;
-
     background: #071014;
-
     overflow: hidden;
+    margin: 0;
+    border: none;
 
     transition:
         background var(--transition),
@@ -2320,7 +2317,7 @@ ol {
 
     margin-top: 20px;
 
-    color: #64736f;
+    color: #ffffff;
 
     font-size: 12px;
     line-height: 1.8;
@@ -2367,7 +2364,7 @@ ol {
 .footer-column h4 {
     margin-bottom: 22px;
 
-    color: #5c6d68;
+    color: #feffff;
 
     font-family: var(--font-mono);
     font-size: 8px;
@@ -2379,7 +2376,7 @@ ol {
 .footer-column span {
     margin-bottom: 11px;
 
-    color: #7c8c88;
+    color: #ffffff;
 
     font-size: 11px;
     font-style: normal;
@@ -2393,7 +2390,7 @@ ol {
 }
 
 .footer-contact a {
-    color: #9aa9a5;
+    color: #f8f9f9;
 }
 
 .footer-bottom {
@@ -2406,7 +2403,7 @@ ol {
 
     border-top: 1px solid rgba(255,255,255,0.07);
 
-    color: #4d5b58;
+    color: #fcfdfd;
 
     font-family: var(--font-mono);
     font-size: 8px;
@@ -3088,7 +3085,7 @@ ol {
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 1px;
+    gap: 20px;
 
     background: rgba(120,255,181,.12);
 
@@ -7060,4 +7057,86 @@ textarea.form-control {
         inset: -8px;
         opacity: 0.2;
     }
+}
+
+
+.navbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #9cff3b,
+        transparent
+    );
+    box-shadow: 0 0 8px rgba(156, 255, 59, 0.5);
+}
+
+
+
+
+
+
+.center-button {
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+.center-button .btn-outline-light {
+    position: relative;
+    padding: 14px 24px;
+    border: 1px solid var(--cyber);
+    color: var(--cyber);
+    background: rgba(57, 255, 136, 0.04);
+    box-shadow: 0 0 0 rgba(57, 255, 136, 0);
+    transition: all 0.35s ease;
+}
+
+.center-button .btn-outline-light i {
+    margin-left: 8px;
+    transition: transform 0.35s ease;
+}
+
+.center-button .btn-outline-light:hover {
+    color: #071014;
+    background: var(--cyber);
+    border-color: var(--cyber);
+    box-shadow:
+        0 0 15px rgba(57, 255, 136, 0.25),
+        0 0 35px rgba(57, 255, 136, 0.12);
+    transform: translateY(-3px);
+}
+
+.center-button .btn-outline-light:hover i {
+    transform: translateX(5px);
+}
+
+
+
+
+.inner-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 70px;
+}
+
+.inner-hero-content {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-floating-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }

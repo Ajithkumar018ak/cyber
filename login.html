@@ -948,48 +948,39 @@
         }
 
 
-        .form-control {
+      
+         .form-control {
+    width: 100%;
+    height: 52px;
+    padding: 0 45px;
 
-            width: 100%;
+    border: 1px solid rgba(0, 255, 156, 0.25);
+    border-radius: 8px;
 
-            height: 52px;
+    outline: none;
 
-            padding: 0 45px;
+    background: #101b18;
 
-            border: 1px solid rgba(0,255,156,.11);
+    color: var(--text);
 
-            border-radius: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
 
-            outline: none;
+    transition: .25s ease;
+}
 
-            background: rgba(0,0,0,.28);
+.form-control::placeholder {
+    color: #6f8580;
+}
 
-            color: var(--text);
+.form-control:focus {
+    background: #13231f;
+    border-color: var(--green);
 
-            font-family: "DM Sans", sans-serif;
-
-            font-size: 13px;
-
-            transition: .25s ease;
-
-        }
-
-
-        .form-control::placeholder {
-
-            color: #3e514b;
-
-        }
-
-
-        .form-control:focus {
-
-            border-color: rgba(0,255,156,.55);
-
-            box-shadow:
-                0 0 0 3px rgba(0,255,156,.06);
-
-        }
+    box-shadow:
+        0 0 0 3px rgba(0, 255, 156, 0.08),
+        0 0 18px rgba(0, 255, 156, 0.05);
+}
 
 
         /* =====================================================
@@ -1880,7 +1871,7 @@
                         class="main-btn"
                     >
 
-                        Authenticate
+                        SIGN-IN
 
                         <i class="fa-solid fa-arrow-right"></i>
 
@@ -2060,7 +2051,7 @@
                         class="main-btn"
                     >
 
-                        Open Security Console
+                        SIGN-IN
 
                         <i class="fa-solid fa-arrow-right"></i>
 

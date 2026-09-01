@@ -1698,8 +1698,14 @@
 
 
                 <div class="brand-text">
-                    <img src="assets/logo.webp" alt="CyberGuard Logo" class="brand-logo">
-                </div>
+    <a href="user-dashboard.html" class="brand-link">
+        <img 
+            src="assets/logo.webp" 
+            alt="CyberGuard Logo" 
+            class="brand-logo"
+        >
+    </a>
+</div>
 
             </div>
 
@@ -5029,11 +5035,14 @@
         mobileMenu.addEventListener(
             "click",
             () => {
-
-                sidebar.classList.add("open");
-
-                sidebarOverlay.classList.add("active");
-
+                const isOpen = sidebar.classList.contains("open");
+                if (isOpen) {
+                    sidebar.classList.remove("open");
+                    sidebarOverlay.classList.remove("active");
+                } else {
+                    sidebar.classList.add("open");
+                    sidebarOverlay.classList.add("active");
+                }
             }
         );
 

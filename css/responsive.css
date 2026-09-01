@@ -1,127 +1,1018 @@
 /* =========================================================
-   STACKLY SECURITY — RESPONSIVE OVERRIDES
+   CYBERSEC — PRODUCTION-READY RESPONSIVE STYLESHEET
    responsive.css
+   Covers breakpoints: 900px, 768px, 600px, 480px, 414px, 390px, 375px, 360px, 320px
+   Pages: index.html, about.html, services.html, career.html, contact.html
 ========================================================= */
 
-/* Adjust scroll padding to prevent fixed navbar from overlapping anchors */
+/* =========================================================
+   1. GLOBAL RESET & OVERFLOW PREVENTION
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html {
-    scroll-padding-top: 96px;
-}
-
-@media (max-width: 900px) {
-    html {
-        scroll-padding-top: 80px;
-    }
-}
-
-@media (max-width: 600px) {
-    html {
-        scroll-padding-top: 70px;
-    }
-}
-
-/* Ensure body doesn't overflow horizontally */
-body {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
-/* Header & Navbar adjustments when scrolling and fixed */
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative;
+}
+
+.page-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Background elements & scan lines containment */
+.cyber-grid,
+.hero-scan-line,
+.hero-background,
+.hero-overlay,
+.inner-hero-background,
+.inner-hero-overlay,
+.page-hero-background,
+.page-hero-overlay,
+.error-background,
+.error-grid,
+.error-scan-line {
+    max-width: 100vw !important;
+    overflow: hidden !important;
+    pointer-events: none;
+}
+
+/* Section container standard responsive sizing */
+.section-container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-left: clamp(16px, 4vw, 32px);
+    padding-right: clamp(16px, 4vw, 32px);
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   2. HEADER & MOBILE NAVIGATION (ALL 5 PAGES)
+========================================================= */
+
 .site-header {
-    position: fixed !important; /* Ensure fixed position */
+    position: fixed !important;
     left: 0;
     right: 0;
     top: 0;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100vw !important;
     z-index: 9999;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
 .site-header .navbar {
-    transition: min-height 0.35s ease, padding 0.35s ease;
+    width: min(1400px, calc(100% - 32px)) !important;
+    margin: 0 auto;
+    box-sizing: border-box;
+    transition: min-height 0.35s ease, padding 0.35s ease, background 0.35s ease;
 }
 
-/* Scrolled compact treatment */
-.site-header.scrolled .navbar {
-    min-height: 68px !important;
-}
-
-/* Toggle mobile navbar elements on tablet/mobile screens */
+/* Tablet & Mobile Header Behavior (<= 991px) */
 @media (max-width: 991px) {
     .desktop-navigation,
     .security-status,
-    .login-link {
+    .login-link,
+    .navbar .btn,
+    .navbar-actions {
         display: none !important;
     }
-    
+
     .menu-toggle {
         display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        border: 1px solid rgba(57, 255, 136, 0.3);
+        background: rgba(7, 15, 18, 0.85);
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 0;
+        z-index: 100;
+        margin-left: auto;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--cyber, #39ff88);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Mobile Sidebar Menu */
+    .mobile-sidebar {
+        width: min(340px, 85vw) !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        height: 100vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-sidebar .mobile-menu a {
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        font-size: 15px;
+        border-radius: 6px;
+        box-sizing: border-box;
+        word-break: break-word;
     }
 }
 
-/* Mobile responsive menu alignments */
 @media (max-width: 768px) {
+    html {
+        scroll-padding-top: 80px;
+    }
+
     .site-header .navbar {
-        min-height: 74px;
-        width: min(1400px, calc(100% - 32px));
+        min-height: 66px !important;
+        padding: 0 16px !important;
+        width: calc(100% - 24px) !important;
     }
-    
+
     .site-header.scrolled .navbar {
-        min-height: 60px !important;
+        min-height: 58px !important;
     }
-    
+
     .brand-main {
-        font-size: 18px !important;
+        font-size: 17px !important;
+        letter-spacing: 0.5px;
     }
-    
+
     .brand-sub {
-        font-size: 7.5px !important;
-    }
-    
-    /* Ensure no overlapping of hero elements */
-    .hero-container {
-        padding-top: 110px !important;
+        font-size: 7px !important;
+        letter-spacing: 1.5px;
     }
 }
 
 @media (max-width: 480px) {
+    html {
+        scroll-padding-top: 72px;
+    }
+
     .site-header .navbar {
-        width: min(1400px, calc(100% - 24px));
+        min-height: 60px !important;
+        padding: 0 12px !important;
+        width: calc(100% - 16px) !important;
     }
-    
-    .hero-container {
-        padding-top: 96px !important;
+
+    .site-header.scrolled .navbar {
+        min-height: 54px !important;
     }
-    
-    /* Clamp large text values to prevent overflow */
-    .hero-title {
-        font-size: clamp(32px, 9vw, 46px) !important;
-        letter-spacing: -1px !important;
+
+    .brand-logo {
+        width: 32px !important;
+        height: 32px !important;
     }
-    
-    .section-title {
-        font-size: clamp(24px, 7vw, 36px) !important;
+
+    .brand-main {
+        font-size: 15px !important;
     }
-    
+
+    .brand-sub {
+        font-size: 6.5px !important;
+    }
+}
+
+/* =========================================================
+   3. HERO SECTIONS (ALL 5 PAGES)
+========================================================= */
+
+/* Base responsive padding for all hero sections */
+.hero-section,
+.inner-hero,
+.page-hero,
+.about-hero,
+.services-page-hero,
+.career-hero,
+.contact-hero {
+    padding-top: clamp(96px, 14vh, 140px) !important;
+    padding-bottom: clamp(40px, 7vw, 90px) !important;
+    min-height: auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+/* Hero container grids stack on <= 991px */
+@media (max-width: 991px) {
+    .hero-container,
+    .inner-hero-grid,
+    .page-hero-container,
+    .services-page-hero .section-container {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: clamp(28px, 5vw, 44px) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .hero-content,
+    .inner-hero-content,
+    .page-hero-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        text-align: left;
+    }
+
+    .hero-image,
+    .inner-hero-image,
+    .page-hero-image,
+    .hero-floating-card,
+    .reveal-security-card {
+        width: 100% !important;
+        max-width: min(560px, 100%) !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .hero-title,
+    .page-hero-title {
+        font-size: clamp(30px, 6.5vw, 46px) !important;
+        line-height: 1.18 !important;
+        letter-spacing: -0.5px !important;
+        max-width: 100% !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .hero-description,
+    .page-hero-description {
+        font-size: clamp(14px, 3.5vw, 16.5px) !important;
+        line-height: 1.65 !important;
+        max-width: 100% !important;
+    }
+
     .hero-buttons {
-        flex-direction: column;
-        width: 100%;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-top: 24px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-buttons {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons a,
+    .hero-buttons button {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        min-height: 48px !important;
+        font-size: 14px !important;
+        padding: 12px 20px !important;
+    }
+
+    .hero-eyebrow,
+    .section-label {
+        font-size: 11px !important;
+        letter-spacing: 1.5px !important;
+        padding: 4px 10px !important;
+        max-width: 100% !important;
+        flex-wrap: wrap !important;
+    }
+
+    .hero-trust {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-title,
+    .page-hero-title {
+        font-size: clamp(24px, 7.8vw, 30px) !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero-description,
+    .page-hero-description {
+        font-size: 13.5px !important;
+        line-height: 1.55 !important;
+    }
+}
+
+/* =========================================================
+   4. INDEX / HOME PAGE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 991px) {
+    /* Intro Section */
+    .intro-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        width: 100% !important;
+    }
+
+    .intro-main-content,
+    .intro-side-content {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Threat Dashboard Grid */
+    .threat-dashboard-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        width: 100% !important;
+    }
+
+    .threat-terminal,
+    .threat-details-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Services Grid */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Why Us Grid */
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Contact CTA Box */
+    .contact-cta-box {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 24px !important;
+        padding: clamp(24px, 5vw, 48px) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-cta-content {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .contact-cta-actions {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Section Headings */
+    .section-heading-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        margin-bottom: clamp(28px, 5vw, 44px) !important;
+        width: 100% !important;
+    }
+
+    .section-title {
+        font-size: clamp(22px, 5.5vw, 32px) !important;
+        line-height: 1.25 !important;
+        word-break: break-word !important;
+    }
+
+    .section-description {
+        font-size: clamp(13.5px, 3.5vw, 15.5px) !important;
+        line-height: 1.6 !important;
+        max-width: 100% !important;
+    }
+
+    /* Process Items */
+    .process-item {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding: clamp(18px, 4vw, 28px) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .process-step-indicator {
+        margin-bottom: 0 !important;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+
+    .stat-item {
+        padding: clamp(16px, 3.5vw, 24px) !important;
+        box-sizing: border-box !important;
+    }
+
+    .stat-number {
+        font-size: clamp(24px, 6vw, 36px) !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .services-grid,
+    .why-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .service-card,
+    .why-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: clamp(20px, 5vw, 28px) !important;
+    }
+
+    /* Newsletter Box */
+    .newsletter-box {
+        padding: clamp(20px, 5vw, 36px) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .newsletter-form {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .newsletter-input-wrap {
+        width: 100% !important;
+    }
+
+    .newsletter-form input[type="email"] {
+        width: 100% !important;
+        min-height: 48px !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    .newsletter-form button,
+    .newsletter-form .btn {
+        width: 100% !important;
+        min-height: 48px !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .stats-grid {
+        grid-template-columns: 1fr !important;
         gap: 12px !important;
     }
-    
-    .hero-buttons .btn {
-        width: 100%;
+}
+
+/* =========================================================
+   5. ABOUT PAGE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 900px) {
+    .about-feature-grid,
+    .story-grid,
+    .mission-grid,
+    .team-grid,
+    .philosophy-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        width: 100% !important;
+    }
+
+    .about-image-wrapper,
+    .mission-image,
+    .story-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .about-image-wrapper img,
+    .mission-image img,
+    .story-image img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover;
     }
 }
 
-/* General improvements to grids and layouts */
-.intro-grid,
-.services-grid,
-.why-grid,
-.process-grid,
-.careers-grid,
-.contact-grid {
-    max-width: 100%;
+/* =========================================================
+   6. SERVICES PAGE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 991px) {
+    .services-detail-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        width: 100% !important;
+    }
+
+    .service-detail-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: clamp(20px, 4.5vw, 32px) !important;
+    }
+
+    .service-badges,
+    .service-tags,
+    .tech-pills {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .service-badge,
+    .service-tag {
+        font-size: 11px !important;
+        padding: 4px 9px !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 18px !important;
+        width: 100% !important;
+    }
+
+    .service-feature-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        width: 100% !important;
+    }
+
+    .service-feature-content,
+    .service-feature-image {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }
 
-img {
-    height: auto;
+@media (max-width: 650px) {
+    .capabilities-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .capability-item {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: clamp(16px, 4vw, 22px) !important;
+    }
+}
+
+/* =========================================================
+   7. CAREER PAGE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 900px) {
+    .career-intro-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        width: 100% !important;
+    }
+
+    .career-values-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 18px !important;
+        width: 100% !important;
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 18px !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .career-values-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    /* Job Cards Fluid Stacking */
+    .job-card {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+        padding: clamp(18px, 4vw, 26px) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        align-items: flex-start !important;
+    }
+
+    .job-card-header {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .job-title {
+        font-size: clamp(17px, 4.5vw, 20px) !important;
+        line-height: 1.3 !important;
+        word-break: break-word !important;
+    }
+
+    .job-info-row,
+    .job-tags {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .job-apply-btn,
+    .job-card .btn {
+        width: 100% !important;
+        margin-top: 8px !important;
+        text-align: center !important;
+        justify-content: center !important;
+        min-height: 44px !important;
+    }
+}
+
+/* =========================================================
+   8. CONTACT PAGE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 991px) {
+    .contact-intro-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        width: 100% !important;
+    }
+
+    .contact-channels-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 18px !important;
+        width: 100% !important;
+    }
+
+    .contact-form-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        width: 100% !important;
+    }
+
+    .contact-form-side,
+    .contact-form-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .security-contact-form {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: clamp(20px, 5vw, 36px) !important;
+        box-sizing: border-box !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .contact-channels-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .contact-channel-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: clamp(18px, 4.5vw, 26px) !important;
+    }
+
+    /* Contact Form Fields */
+    .form-group {
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    .form-label {
+        font-size: 13px !important;
+        margin-bottom: 6px !important;
+        display: block !important;
+    }
+
+    .form-control,
+    .security-contact-form input,
+    .security-contact-form select,
+    .security-contact-form textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 48px !important;
+        font-size: 14.5px !important;
+        padding: 10px 14px !important;
+        box-sizing: border-box !important;
+        border-radius: 8px !important;
+    }
+
+    .security-contact-form textarea {
+        min-height: 120px !important;
+        resize: vertical !important;
+    }
+
+    .form-submit-btn,
+    .security-contact-form button[type="submit"] {
+        width: 100% !important;
+        min-height: 50px !important;
+        font-size: 14.5px !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 12px 20px !important;
+    }
+
+    .form-note {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+        text-align: center !important;
+    }
+}
+
+/* =========================================================
+   9. FOOTER RESPONSIVENESS (ALL 5 PAGES)
+========================================================= */
+
+.site-footer {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+@media (max-width: 991px) {
+    .footer-main {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 36px 24px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    .footer-brand {
+        grid-column: span 1;
+        text-align: left;
+    }
+
+    .footer-column {
+        width: 100% !important;
+    }
+
+    .footer-column h4 {
+        font-size: 14.5px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .footer-column ul li a {
+        font-size: 13.5px !important;
+        padding: 4px 0 !important;
+        display: block;
+    }
+
+    .footer-bottom {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 14px !important;
+        padding: 20px 0 !important;
+        width: 100% !important;
+    }
+
+    .footer-socials {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+
+    .footer-socials a {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        min-height: 38px !important;
+    }
+}
+
+/* =========================================================
+   10. TARGETED MOBILE BREAKPOINTS (480px, 414px, 390px, 375px, 360px, 320px)
+========================================================= */
+
+/* Large Mobile (<= 480px) */
+@media (max-width: 480px) {
+    .section-light,
+    .section-dark,
+    section {
+        padding-top: clamp(40px, 8vw, 64px) !important;
+        padding-bottom: clamp(40px, 8vw, 64px) !important;
+    }
+
+    .section-title {
+        font-size: clamp(20px, 6vw, 26px) !important;
+    }
+
+    .btn,
+    button.btn,
+    a.btn {
+        min-height: 46px;
+        padding: 10px 16px;
+        font-size: 13.5px;
+    }
+
+    .preloader-visual {
+        transform: scale(0.85);
+    }
+}
+
+/* Standard Mobile (<= 390px) */
+@media (max-width: 390px) {
+    .section-container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    .hero-title,
+    .page-hero-title {
+        font-size: clamp(23px, 7.5vw, 28px) !important;
+    }
+
+    .hero-description,
+    .page-hero-description {
+        font-size: 13px !important;
+    }
+
+    .card,
+    .service-card,
+    .why-card,
+    .process-item,
+    .job-card,
+    .contact-channel-card,
+    .stat-item {
+        padding: 16px !important;
+    }
+
+    .btn,
+    button.btn,
+    a.btn {
+        font-size: 13px !important;
+        padding: 10px 14px !important;
+    }
+}
+
+/* Small Mobile (<= 360px) */
+@media (max-width: 360px) {
+    .section-container {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .hero-title,
+    .page-hero-title {
+        font-size: 22px !important;
+    }
+
+    .brand-main {
+        font-size: 14px !important;
+    }
+
+    .brand-sub {
+        display: none;
+    }
+
+    .menu-toggle {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        min-height: 38px !important;
+    }
+
+    .mobile-sidebar {
+        width: 90vw !important;
+    }
+}
+
+/* Ultra-Compact Mobile (<= 320px) */
+@media (max-width: 320px) {
+    .section-container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .hero-title,
+    .page-hero-title {
+        font-size: 20px !important;
+        letter-spacing: -0.3px !important;
+    }
+
+    .hero-description,
+    .page-hero-description {
+        font-size: 12.5px !important;
+    }
+
+    .section-title {
+        font-size: 19px !important;
+    }
+
+    .card,
+    .service-card,
+    .why-card,
+    .process-item,
+    .job-card,
+    .contact-channel-card,
+    .stat-item {
+        padding: 12px !important;
+    }
+
+    .btn,
+    button.btn,
+    a.btn {
+        font-size: 12.5px !important;
+        padding: 9px 12px !important;
+        letter-spacing: 0 !important;
+    }
 }
