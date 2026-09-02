@@ -1490,7 +1490,7 @@ ol {
 .intro-side-content > p {
     margin-top: 20px;
 
-    color: #687874;
+    color: #040404;
 
     font-size: 14px;
     line-height: 1.8;
@@ -7139,4 +7139,167 @@ textarea.form-control {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+}
+
+
+/* =========================================
+   CYBER CARD OUTER BORDER HIGHLIGHT
+========================================= */
+
+.cyber-card {
+    position: relative;
+    border: 1px solid rgba(0, 255, 156, 0.45) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 255, 156, 0.08),
+        0 0 25px rgba(0, 255, 156, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Top glowing outer line */
+
+.cyber-card::before {
+    content: "";
+    position: absolute;
+
+    top: -1px;
+    left: 8%;
+    width: 45%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00ff9c,
+        #00d9ff,
+        transparent
+    );
+
+    box-shadow:
+        0 0 10px rgba(0, 255, 156, 0.8),
+        0 0 20px rgba(0, 217, 255, 0.4);
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   THREAT ANIMATION AREA DIFFERENT BACKGROUND
+========================================= */
+
+.threat-visual {
+    position: relative;
+
+    margin: 18px 0;
+
+    min-height: 240px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(0, 217, 255, 0.22);
+
+    border-radius: 12px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 255, 156, 0.10),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(0, 217, 255, 0.06),
+            rgba(0, 0, 0, 0.35)
+        ),
+        #07110e;
+
+    box-shadow:
+        inset 0 0 30px rgba(0, 255, 156, 0.04),
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Animation area corner highlight */
+
+.threat-visual::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    border: 1px solid rgba(0, 255, 156, 0.08);
+
+    border-radius: 8px;
+
+    pointer-events: none;
+}
+
+
+/* Bottom subtle glow */
+
+.threat-visual::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -40px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 180px;
+    height: 80px;
+
+    background: rgba(0, 255, 156, 0.15);
+
+    filter: blur(35px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+
+.intro-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-heading-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.section-label {
+    margin-bottom: 28px;
+}
+
+.section-heading {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-heading h2 {
+    font-size: clamp(42px, 5vw, 78px);
+    line-height: 1.1;
+    margin-bottom: 28px;
+}
+
+.section-heading h2 em {
+    display: block;
+}
+
+.section-heading p {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.8;
 }
