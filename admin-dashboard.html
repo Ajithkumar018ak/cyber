@@ -1853,10 +1853,10 @@
             </div>
 
 
-                        <nav class="sidebar-nav">
+            <nav class="sidebar-nav">
 
                 <a href="#" class="nav-item active" data-section="dashboard">
-                    <i class="fa-solid fa-grid-2"></i>
+                    <i class="fa-solid fa-table-cells-large"></i>
                     <span>Dashboard</span>
                 </a>
 
@@ -1958,7 +1958,8 @@
                         <i class="fa-solid fa-signal"></i>
                     </button>
 
-                    <button class="icon-btn" id="notificationBtn" title="Notifications">
+                    <button class="icon-btn" id="notificationBtn" title="Notifications"
+                        onclick="window.location.href='404.html'">
                         <i class="fa-regular fa-bell"></i>
 
                         <span class="notification-dot"></span>
@@ -2687,16 +2688,16 @@
                                 <div style="font-size: 12px; color: var(--muted); font-weight: 600;">Quick Admin Actions
                                 </div>
                                 <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                                    <button class="action-btn" onclick="triggerAdminAction('Add New User')"><i
+                                    <button class="action-btn" onclick="window.location.href='404.html'"><i
                                             class="fa-solid fa-user-plus"></i> Add New User</button>
-                                    <button class="action-btn" onclick="triggerAdminAction('Create Security Policy')"><i
+                                    <button class="action-btn" onclick="window.location.href='404.html'"><i
                                             class="fa-solid fa-file-shield"></i> Create Security Policy</button>
-                                    <button class="action-btn" onclick="triggerAdminAction('Review Access')"><i
+                                    <button class="action-btn" onclick="window.location.href='404.html'"><i
                                             class="fa-solid fa-user-check"></i> Review Access</button>
-                                    <button class="action-btn" onclick="triggerAdminAction('Investigate Incident')"><i
+                                    <button class="action-btn" onclick="window.location.href='404.html'"><i
                                             class="fa-solid fa-magnifying-glass-shield"></i> Investigate
                                         Incident</button>
-                                    <button class="action-btn" onclick="triggerAdminAction('Export Security Logs')"><i
+                                    <button class="action-btn" onclick="window.location.href='404.html'"><i
                                             class="fa-solid fa-file-export"></i> Export Security Logs</button>
                                 </div>
                             </div>
@@ -2770,27 +2771,27 @@
                                 </div>
                                 <div class="card-body"
                                     style="display: flex; flex-direction: column; gap: 10px; justify-content: center; height: 100%; min-height: 250px;">
-                                    <button class="action-btn" onclick="openSection('users')"
+                                    <button class="action-btn" onclick="window.location.href='404.html'"
                                         style="padding: 10px; font-size: 11px; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%;">
                                         <i class="fa-solid fa-users-gear" style="color: var(--green); width: 16px;"></i>
                                         Manage Users
                                     </button>
-                                    <button class="action-btn" onclick="triggerQuickAction('Review Security Alerts')"
+                                    <button class="action-btn" onclick="window.location.href='404.html'"
                                         style="padding: 10px; font-size: 11px; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%;">
                                         <i class="fa-solid fa-bell" style="color: var(--yellow); width: 16px;"></i>
                                         Review Security Alerts
                                     </button>
-                                    <button class="action-btn" onclick="openSection('policies')"
+                                    <button class="action-btn" onclick="window.location.href='404.html'"
                                         style="padding: 10px; font-size: 11px; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%;">
                                         <i class="fa-solid fa-shield-halved"
                                             style="color: var(--blue); width: 16px;"></i> Update Policies
                                     </button>
-                                    <button class="action-btn" onclick="openSection('access')"
+                                    <button class="action-btn" onclick="window.location.href='404.html'"
                                         style="padding: 10px; font-size: 11px; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%;">
                                         <i class="fa-solid fa-key" style="color: var(--purple); width: 16px;"></i>
                                         Review Access Control
                                     </button>
-                                    <button class="action-btn" onclick="openSection('activity')"
+                                    <button class="action-btn" onclick="window.location.href='404.html'"
                                         style="padding: 10px; font-size: 11px; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%;">
                                         <i class="fa-solid fa-list-check" style="color: var(--text); width: 16px;"></i>
                                         View Activity Logs
@@ -3499,20 +3500,25 @@
                             </h3>
 
                             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                                <button class="action-btn" id="btnAdminAddUser">
+                                <button class="action-btn" id="btnAdminAddUser"
+                                    onclick="window.location.href='404.html'">
                                     <i class="fa-solid fa-user-plus"></i> Add User
                                 </button>
-                                <button class="action-btn" id="btnAdminExportUsers">
+                                <button class="action-btn" id="btnAdminExportUsers"
+                                    onclick="window.location.href='404.html'">
                                     <i class="fa-solid fa-download"></i> Export Users
                                 </button>
-                                <button class="action-btn" id="btnAdminManageRoles">
+                                <button class="action-btn" id="btnAdminManageRoles"
+                                    onclick="window.location.href='404.html'">
                                     <i class="fa-solid fa-user-shield"></i> Manage Roles
                                 </button>
                                 <button class="action-btn" id="btnAdminSuspendSelected"
+                                    onclick="window.location.href='404.html'"
                                     style="color: var(--red); border-color: rgba(255, 93, 103, 0.2);">
                                     <i class="fa-solid fa-user-slash"></i> Suspend Selected
                                 </button>
-                                <button class="action-btn" id="btnAdminRefreshUsers">
+                                <button class="action-btn" id="btnAdminRefreshUsers"
+                                    onclick="window.location.href='404.html'">
                                     <i class="fa-solid fa-rotate"></i> Refresh
                                 </button>
                             </div>
@@ -3666,11 +3672,11 @@
 
                             <div class="management-actions">
 
-                                <button class="action-btn" onclick="showMessage('View Device')">
+                                <button class="action-btn" onclick="window.location.href='404.html'">
                                     View Device
                                 </button>
 
-                                <button class="action-btn" onclick="showMessage('Device Scan')">
+                                <button class="action-btn" onclick="window.location.href='404.html'">
                                     Scan
                                 </button>
 
@@ -4027,16 +4033,20 @@
                             style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: space-between; align-items: center;">
                             <div style="font-size: 12px; color: var(--muted);">Policy Configuration Controls</div>
                             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                                <button class="action-btn" id="btnPolicyCreate"><i class="fa-solid fa-plus"></i> Create
+                                <button class="action-btn" id="btnPolicyCreate"
+                                    onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Create
                                     Policy</button>
-                                <button class="action-btn" id="btnPolicyEdit"><i class="fa-solid fa-pen"></i> Edit
+                                <button class="action-btn" id="btnPolicyEdit"
+                                    onclick="window.location.href='404.html'"><i class="fa-solid fa-pen"></i> Edit
                                     Policy</button>
-                                <button class="action-btn" id="btnPolicyReview"><i
-                                        class="fa-solid fa-clipboard-list"></i> Review Policies</button>
+                                <button class="action-btn" id="btnPolicyReview"
+                                    onclick="window.location.href='404.html'"><i class="fa-solid fa-clipboard-list"></i>
+                                    Review Policies</button>
                                 <button class="action-btn" id="btnPolicyEnableAll"
+                                    onclick="window.location.href='404.html'"
                                     style="color: var(--green); border-color: rgba(56, 232, 154, 0.2);"><i
                                         class="fa-solid fa-check-double"></i> Enable All</button>
-                                <button class="action-btn" id="btnPolicyReset"
+                                <button class="action-btn" id="btnPolicyReset" onclick="window.location.href='404.html'"
                                     style="color: var(--red); border-color: rgba(255, 93, 103, 0.2);"><i
                                         class="fa-solid fa-rotate-left"></i> Reset Policies</button>
                             </div>
@@ -4243,7 +4253,7 @@
                                 Full system access and security administration.
                             </p>
 
-                            <button class="action-btn" onclick="showMessage('Manage Administrator Permissions')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 Manage Role
                             </button>
 
@@ -4264,7 +4274,7 @@
                                 Threat monitoring and incident management.
                             </p>
 
-                            <button class="action-btn" onclick="showMessage('Manage Security Analyst Permissions')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 Manage Role
                             </button>
 
@@ -4285,7 +4295,7 @@
                                 Standard protected organization access.
                             </p>
 
-                            <button class="action-btn" onclick="showMessage('View Employee Permissions')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 View Permissions
                             </button>
 
@@ -4306,7 +4316,7 @@
                                 Read-only security and audit access.
                             </p>
 
-                            <button class="action-btn" onclick="showMessage('View Auditor Permissions')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 View Permissions
                             </button>
 
@@ -4356,16 +4366,21 @@
                             style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: space-between; align-items: center;">
                             <div style="font-size: 12px; color: var(--muted);">Access Governance Controls</div>
                             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                                <button class="action-btn" id="btnAccessAddRole"><i class="fa-solid fa-plus"></i> Add
+                                <button class="action-btn" id="btnAccessAddRole"
+                                    onclick="window.location.href='404.html'"><i class="fa-solid fa-plus"></i> Add
                                     Role</button>
-                                <button class="action-btn" id="btnAccessManagePerms"><i class="fa-solid fa-sliders"></i>
+                                <button class="action-btn" id="btnAccessManagePerms"
+                                    onclick="window.location.href='404.html'"><i class="fa-solid fa-sliders"></i>
                                     Manage Permissions</button>
-                                <button class="action-btn" id="btnAccessReviewPriv"><i
-                                        class="fa-solid fa-user-check"></i> Review Privileged Access</button>
+                                <button class="action-btn" id="btnAccessReviewPriv"
+                                    onclick="window.location.href='404.html'"><i class="fa-solid fa-user-check"></i>
+                                    Review Privileged Access</button>
                                 <button class="action-btn" id="btnAccessRevoke"
+                                    onclick="window.location.href='404.html'"
                                     style="color: var(--red); border-color: rgba(255, 93, 103, 0.2);"><i
                                         class="fa-solid fa-ban"></i> Revoke Access</button>
-                                <button class="action-btn" id="btnAccessViewSessions"><i class="fa-solid fa-list"></i>
+                                <button class="action-btn" id="btnAccessViewSessions"
+                                    onclick="window.location.href='404.html'"><i class="fa-solid fa-list"></i>
                                     View Sessions</button>
                             </div>
                         </div>
@@ -4513,10 +4528,12 @@
                                     <option value="permission">Permissions / Roles</option>
                                 </select>
                                 <button class="action-btn" id="btnClearAdminActivityFilters"
-                                    style="padding: 8px 12px;">Clear</button>
-                                <button class="action-btn" id="btnAdminActivityRefresh" style="padding: 8px 12px;"><i
+                                    onclick="window.location.href='404.html'" style="padding: 8px 12px;">Clear</button>
+                                <button class="action-btn" id="btnAdminActivityRefresh"
+                                    onclick="window.location.href='404.html'" style="padding: 8px 12px;"><i
                                         class="fa-solid fa-rotate"></i> Refresh</button>
-                                <button class="action-btn" id="btnAdminActivityExport" style="padding: 8px 12px;"><i
+                                <button class="action-btn" id="btnAdminActivityExport"
+                                    onclick="window.location.href='404.html'" style="padding: 8px 12px;"><i
                                         class="fa-solid fa-download"></i> Export</button>
                             </div>
                         </div>
@@ -4748,7 +4765,7 @@
                                 Complete overview of security posture, threats and incidents.
                             </p>
 
-                            <button class="action-btn" onclick="generateReport('Organization Security Report')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -4770,7 +4787,7 @@
                                 Recent threats and detection intelligence across the environment.
                             </p>
 
-                            <button class="action-btn" onclick="generateReport('Threat Intelligence Report')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -4792,7 +4809,7 @@
                                 User accounts, roles, permissions and access activity.
                             </p>
 
-                            <button class="action-btn" onclick="generateReport('User Access Report')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -4814,7 +4831,7 @@
                                 Endpoint health and protected device status summary.
                             </p>
 
-                            <button class="action-btn" onclick="generateReport('Device Security Report')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -4836,7 +4853,7 @@
                                 Security controls and compliance readiness overview.
                             </p>
 
-                            <button class="action-btn" onclick="generateReport('Compliance Report')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -4858,7 +4875,7 @@
                                 Administrative actions and system change history.
                             </p>
 
-                            <button class="action-btn" onclick="generateReport('Audit Activity Report')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -5345,7 +5362,8 @@
                     <!-- Modal content will be generated dynamically -->
                 </div>
                 <div class="modal-footer">
-                    <button class="action-btn" id="admModalBtnAction" style="display: none;">Action</button>
+                    <button class="action-btn" id="admModalBtnAction" onclick="window.location.href='404.html'"
+                        style="display: none;">Action</button>
                     <button class="action-btn" onclick="closeModal('adminDetailsModal')">Close</button>
                 </div>
             </div>
@@ -5616,9 +5634,9 @@
                     <td><span class="severity ${secClass}">${user.secStatus}</span></td>
                     <td>
                         <div class="action-group" style="display: flex; gap: 4px;">
-                            <button class="action-btn" onclick="triggerUserView('${user.email}')">View</button>
-                            <button class="action-btn" onclick="triggerUserEdit('${user.email}')">Edit</button>
-                            <button class="action-btn ${user.status === 'Suspended' ? '' : 'danger'}" onclick="triggerUserSuspend('${user.email}')">
+                            <button class="action-btn" onclick="window.location.href='404.html'">View</button>
+                            <button class="action-btn" onclick="window.location.href='404.html'">Edit</button>
+                            <button class="action-btn ${user.status === 'Suspended' ? '' : 'danger'}" onclick="window.location.href='404.html'">
                                 ${user.status === 'Suspended' ? 'Unsuspend' : 'Suspend'}
                             </button>
                         </div>
@@ -5667,8 +5685,8 @@
                     <td><span class="severity ${statusClass}">${item.status}</span></td>
                     <td>
                         <div class="action-group" style="display: flex; gap: 4px;">
-                            <button class="action-btn" onclick="triggerAccessEdit('${item.user}')">Edit</button>
-                            <button class="action-btn danger" onclick="triggerAccessRevoke('${item.user}')">Revoke</button>
+                            <button class="action-btn" onclick="window.location.href='404.html'">Edit</button>
+                            <button class="action-btn danger" onclick="window.location.href='404.html'">Revoke</button>
                         </div>
                     </td>
                 </tr>
@@ -5703,7 +5721,7 @@
                     <td>${act.location}</td>
                     <td><span class="severity ${statusClass}">${act.status}</span></td>
                     <td>
-                        <button class="action-btn" onclick="triggerActivityView('${act.id}')">View Details</button>
+                        <button class="action-btn" onclick="window.location.href='404.html'">View Details</button>
                     </td>
                 </tr>
             `;
@@ -5720,122 +5738,27 @@
         };
 
         window.triggerUserView = function (email) {
-            const user = adminUsers.find(u => u.email === email);
-            if (!user) return;
-
-            const body = document.getElementById('admModalBody');
-            body.innerHTML = `
-            <table>
-                <tr><td><strong>Name:</strong></td><td>${user.name}</td></tr>
-                <tr><td><strong>Email Address:</strong></td><td>${user.email}</td></tr>
-                <tr><td><strong>Security Role:</strong></td><td>${user.role}</td></tr>
-                <tr><td><strong>Last Authenticated:</strong></td><td>${user.lastLogin}</td></tr>
-                <tr><td><strong>Account Status:</strong></td><td><span class="severity ${user.status === 'Active' ? 'low' : (user.status === 'Pending' ? 'warning' : 'critical')}">${user.status}</span></td></tr>
-                <tr><td><strong>Compliance Level:</strong></td><td><span class="severity ${user.secStatus === 'Secure' ? 'low' : 'critical'}">${user.secStatus}</span></td></tr>
-            </table>
-        `;
-            document.getElementById('admModalTitle').textContent = `User Profile - ${user.name}`;
-
-            const btn = document.getElementById('admModalBtnAction');
-            btn.style.display = 'block';
-            btn.textContent = user.status === 'Suspended' ? 'Unsuspend Account' : 'Suspend Account';
-            btn.className = `action-btn ${user.status === 'Suspended' ? '' : 'danger'}`;
-            btn.onclick = () => {
-                triggerUserSuspend(user.email);
-                triggerUserView(user.email);
-            };
-
-            openModal('adminDetailsModal');
+            window.location.href = '404.html';
         };
 
         window.triggerUserEdit = function (email) {
-            const user = adminUsers.find(u => u.email === email);
-            if (!user) return;
-
-            const newRole = prompt(`Update role for ${user.name}:`, user.role);
-            if (newRole && newRole.trim() !== '') {
-                user.role = newRole.trim();
-                showToast(`Role updated for ${user.name} ✓`);
-                renderAdminUsers();
-            }
+            window.location.href = '404.html';
         };
 
         window.triggerUserSuspend = function (email) {
-            const user = adminUsers.find(u => u.email === email);
-            if (!user) return;
-
-            if (user.status === 'Suspended') {
-                user.status = 'Active';
-                user.secStatus = 'Secure';
-                showToast(`Account unsuspended for ${user.name} ✓`);
-            } else {
-                user.status = 'Suspended';
-                user.secStatus = 'Risk Detected';
-                showToast(`Account suspended for ${user.name} ✓`, 'error');
-            }
-
-            // Also update access list entry
-            const access = adminAccessList.find(a => a.user === user.name);
-            if (access) {
-                access.status = user.status;
-            }
-
-            renderAdminUsers();
-            renderAdminAccess();
+            window.location.href = '404.html';
         };
 
         window.triggerAccessEdit = function (user) {
-            const item = adminAccessList.find(a => a.user === user);
-            if (!item) return;
-
-            const newAccess = prompt(`Change Access level for ${item.user}:`, item.access);
-            if (newAccess && newAccess.trim() !== '') {
-                item.access = newAccess.trim();
-                showToast(`Access level updated for ${item.user} ✓`);
-                renderAdminAccess();
-            }
+            window.location.href = '404.html';
         };
 
         window.triggerAccessRevoke = function (user) {
-            const item = adminAccessList.find(a => a.user === user);
-            if (!item) return;
-
-            if (confirm(`Are you sure you want to revoke system privileges for ${item.user}?`)) {
-                item.access = 'Restricted';
-                item.status = 'Suspended';
-                showToast(`Access revoked for ${item.user} ✓`, 'error');
-
-                const u = adminUsers.find(us => us.name === item.user);
-                if (u) {
-                    u.status = 'Suspended';
-                    u.secStatus = 'Risk Detected';
-                }
-
-                renderAdminUsers();
-                renderAdminAccess();
-            }
+            window.location.href = '404.html';
         };
 
         window.triggerActivityView = function (id) {
-            const act = adminActivities.find(a => a.id === id);
-            if (!act) return;
-
-            const body = document.getElementById('admModalBody');
-            body.innerHTML = `
-            <table>
-                <tr><td><strong>Timestamp:</strong></td><td>${act.time}</td></tr>
-                <tr><td><strong>Operator:</strong></td><td>${act.user}</td></tr>
-                <tr><td><strong>Event Trigger:</strong></td><td>${act.event}</td></tr>
-                <tr><td><strong>IP Address:</strong></td><td>${act.ip}</td></tr>
-                <tr><td><strong>User Agent:</strong></td><td>${act.device}</td></tr>
-                <tr><td><strong>Location Coordinates:</strong></td><td>${act.location}</td></tr>
-                <tr><td><strong>Audit Status:</strong></td><td><span class="severity ${act.status === 'Blocked' || act.status === 'Critical' ? 'critical' : 'low'}">${act.status}</span></td></tr>
-                <tr><td><strong>Event Category:</strong></td><td>${act.type.toUpperCase()}</td></tr>
-            </table>
-        `;
-            document.getElementById('admModalTitle').textContent = `Security Audit details`;
-            document.getElementById('admModalBtnAction').style.display = 'none';
-            openModal('adminDetailsModal');
+            window.location.href = '404.html';
         };
 
         // ON DOM LOAD BINDERS
@@ -6269,14 +6192,7 @@
         ).addEventListener(
             "click",
             () => {
-
-                alert(
-                    "CyberGuard Admin Notifications\n\n" +
-                    "• 1 critical threat requires investigation\n" +
-                    "• 2 security incidents are currently open\n" +
-                    "• System health is operational"
-                );
-
+                window.location.href = "404.html";
             }
         );
 
@@ -6329,55 +6245,17 @@
            LOGOUT
         ===================================================== */
 
-        document.getElementById(
-            "logoutBtn"
-        ).addEventListener(
-            "click",
-            function (event) {
+        document.getElementById("logoutBtn").addEventListener("click", function (event) {
+            event.preventDefault();
 
-                event.preventDefault();
+            localStorage.removeItem("adminLoggedIn");
+            localStorage.removeItem("userLoggedIn");
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("accountType");
+            localStorage.removeItem("userName");
 
-
-                const confirmLogout =
-                    confirm(
-                        "Are you sure you want to sign out?"
-                    );
-
-
-                if (!confirmLogout) {
-
-                    return;
-
-                }
-
-
-                localStorage.removeItem(
-                    "adminLoggedIn"
-                );
-
-                localStorage.removeItem(
-                    "userLoggedIn"
-                );
-
-                localStorage.removeItem(
-                    "isLoggedIn"
-                );
-
-                localStorage.removeItem(
-                    "accountType"
-                );
-
-                localStorage.removeItem(
-                    "userName"
-                );
-
-
-                window.location.href =
-                    "login.html";
-
-            }
-        );
-
+            window.location.href = "index.html";
+        });
     </script>
 
 </body>

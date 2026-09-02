@@ -1698,14 +1698,10 @@
 
 
                 <div class="brand-text">
-    <a href="user-dashboard.html" class="brand-link">
-        <img 
-            src="assets/logo.webp" 
-            alt="CyberGuard Logo" 
-            class="brand-logo"
-        >
-    </a>
-</div>
+                    <a href="user-dashboard.html" class="brand-link">
+                        <img src="assets/logo.webp" alt="CyberGuard Logo" class="brand-logo">
+                    </a>
+                </div>
 
             </div>
 
@@ -1715,7 +1711,7 @@
 
 
                 <a href="#" class="nav-item active" data-section="dashboard">
-                    <i class="fa-solid fa-grid-2"></i>
+                    <i class="fa-solid fa-grip"></i>
                     <span>Dashboard</span>
                 </a>
 
@@ -1823,11 +1819,13 @@
 
                 <div class="top-actions">
 
-                    <button class="icon-btn hide-mobile" title="Security Status">
+                    <button class="icon-btn hide-mobile" title="Security Status"
+                        onclick="window.location.href='404.html'">
                         <i class="fa-solid fa-signal"></i>
                     </button>
 
-                    <button class="icon-btn" id="notificationBtn" title="Notifications">
+                    <button class="icon-btn" id="notificationBtn" title="Notifications"
+                        onclick="window.location.href='404.html'">
                         <i class="fa-regular fa-bell"></i>
 
                         <span class="notification-dot"></span>
@@ -2032,7 +2030,7 @@
                             <div class="stat-label">Security Score</div>
                             <div class="stat-number" id="dbScoreVal">92 / 100</div>
                             <div class="stat-change" style="color: var(--green);">Excellent</div>
-                            <button class="report-btn" data-open="security"
+                            <button class="report-btn" data-open="security" onclick="window.location.href='404.html'"
                                 style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Details</button>
                         </div>
                         <div class="stat-card">
@@ -2044,7 +2042,7 @@
                             <div class="stat-label">Threats Blocked</div>
                             <div class="stat-number">148</div>
                             <div class="stat-change" style="color: var(--muted);">This Month</div>
-                            <button class="report-btn" data-open="activity"
+                            <button class="report-btn" data-open="activity" onclick="window.location.href='404.html'"
                                 style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Activity</button>
                         </div>
                         <div class="stat-card">
@@ -2056,7 +2054,7 @@
                             <div class="stat-label">Protected Devices</div>
                             <div class="stat-number" id="dbProtectedDevicesCount">07</div>
                             <div class="stat-change" style="color: var(--muted);">All Devices</div>
-                            <button class="report-btn" data-open="devices"
+                            <button class="report-btn" data-open="devices" onclick="window.location.href='404.html'"
                                 style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Devices</button>
                         </div>
                         <div class="stat-card">
@@ -2068,7 +2066,7 @@
                             <div class="stat-label">Open Incidents</div>
                             <div class="stat-number" id="dbOpenIncidentsCount">04</div>
                             <div class="stat-change danger" id="dbHighIncidentsLabel">1 High Priority</div>
-                            <button class="report-btn" data-open="incidents"
+                            <button class="report-btn" data-open="incidents" onclick="window.location.href='404.html'"
                                 style="margin-top: 12px; width: 100%; padding: 6px 10px;">View Incidents</button>
                         </div>
                     </div>
@@ -2453,7 +2451,7 @@
 
                             </div>
 
-                            <button class="report-btn" data-open="activity"
+                            <button class="report-btn" data-open="activity" onclick="window.location.href='404.html'"
                                 style="margin-top: 15px; width: 100%; padding: 10px; font-size: 11px;">
                                 View Activity Logs
                             </button>
@@ -2854,17 +2852,17 @@
                                 </div>
                             </div>
                             <div style="display: flex; gap: 10px; margin-top: 20px;">
-                                <<button class="report-btn btn-checklist-complete"
+                                <button class="report-btn btn-checklist-complete"
                                     onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
                                     Complete Now
-                                    </button>
+                                </button>
 
-                                    <button class="report-btn btn-checklist-review"
-                                        onclick="window.location.href='404.html'"
-                                        style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
-                                        Review Settings
-                                    </button>
+                                <button class="report-btn btn-checklist-review"
+                                    onclick="window.location.href='404.html'"
+                                    style="margin-top: 0; padding: 10px 16px; font-size: 11px;">
+                                    Review Settings
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -3211,14 +3209,18 @@
                             <!-- Filters -->
                             <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="incidentFilters">
                                 <button class="report-btn active-filter" data-filter="all"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">All</button>
                                 <button class="report-btn" data-filter="critical"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Critical</button>
-                                <button class="report-btn" data-filter="high"
+                                <button class="report-btn" data-filter="high" onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">High</button>
                                 <button class="report-btn" data-filter="medium"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Medium</button>
                                 <button class="report-btn" data-filter="resolved"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Resolved</button>
                             </div>
                         </div>
@@ -3398,16 +3400,22 @@
                             <!-- Filters -->
                             <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="deviceFilters">
                                 <button class="report-btn active-filter" data-filter="all"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">All Devices</button>
                                 <button class="report-btn" data-filter="protected"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Protected</button>
                                 <button class="report-btn" data-filter="at-risk"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">At Risk</button>
                                 <button class="report-btn" data-filter="desktop"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Desktop</button>
                                 <button class="report-btn" data-filter="laptop"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Laptop</button>
                                 <button class="report-btn" data-filter="mobile"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Mobile</button>
                             </div>
                         </div>
@@ -3453,23 +3461,30 @@
                                     <option value="oldest">Oldest First</option>
                                 </select>
                                 <button class="report-btn" id="btnClearActivityFilters"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 8px 12px;">Clear Filters</button>
                             </div>
                             <!-- Filters -->
                             <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="activityFilters">
                                 <button class="report-btn active-filter" data-filter="all"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">All</button>
-                                <button class="report-btn" data-filter="login"
+                                <button class="report-btn" data-filter="login" onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Login</button>
                                 <button class="report-btn" data-filter="devices"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Devices</button>
                                 <button class="report-btn" data-filter="security-scan"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Security Scan</button>
                                 <button class="report-btn" data-filter="incidents"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Incidents</button>
                                 <button class="report-btn" data-filter="account"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Account</button>
                                 <button class="report-btn" data-filter="settings"
+                                    onclick="window.location.href='404.html'"
                                     style="margin-top: 0; padding: 6px 12px;">Settings</button>
                             </div>
                         </div>
@@ -3478,7 +3493,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Activity Logs Timeline</h3>
-                            <button class="report-btn" id="btnExportActivity"
+                            <button class="report-btn" id="btnExportActivity" onclick="window.location.href='404.html'"
                                 style="margin-top: 0; padding: 6px 12px; font-size: 10px;">
                                 <i class="fa-solid fa-download" style="margin-right: 6px;"></i>Export Activity
                             </button>
@@ -3548,7 +3563,7 @@
                                 Complete overview of threats, incidents and security posture.
                             </p>
 
-                            <button class="report-btn" onclick="generateReport('Monthly Security Report')">
+                            <button class="report-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -3570,7 +3585,7 @@
                                 Recent threat activity and detection intelligence.
                             </p>
 
-                            <button class="report-btn" onclick="generateReport('Threat Intelligence Report')">
+                            <button class="report-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -3592,7 +3607,7 @@
                                 Security control and compliance readiness summary.
                             </p>
 
-                            <button class="report-btn" onclick="generateReport('Compliance Report')">
+                            <button class="report-btn" onclick="window.location.href='404.html'">
                                 <i class="fa-solid fa-download"></i>
                                 Generate Report
                             </button>
@@ -3818,8 +3833,9 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="report-btn" id="incModalBtnInvestigate" style="margin-top:0;">Investigate</button>
-                    <button class="report-btn" id="incModalBtnResolve"
+                    <button class="report-btn" id="incModalBtnInvestigate" onclick="window.location.href='404.html'"
+                        style="margin-top:0;">Investigate</button>
+                    <button class="report-btn" id="incModalBtnResolve" onclick="window.location.href='404.html'"
                         style="margin-top:0; color: var(--green); border-color: rgba(56, 232, 154, 0.2);">Mark
                         Resolved</button>
                     <button class="report-btn" onclick="closeModal('incidentModal')"
@@ -3880,10 +3896,12 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="report-btn" id="devModalBtnScan" style="margin-top:0;"><i class="fa-solid fa-play"
-                            style="margin-right: 5px;"></i>Run Security Scan</button>
-                    <button class="report-btn" id="devModalBtnRename" style="margin-top:0;">Rename Device</button>
-                    <button class="report-btn" id="devModalBtnRemove"
+                    <button class="report-btn" id="devModalBtnScan" onclick="window.location.href='404.html'"
+                        style="margin-top:0;"><i class="fa-solid fa-play" style="margin-right: 5px;"></i>Run Security
+                        Scan</button>
+                    <button class="report-btn" id="devModalBtnRename" onclick="window.location.href='404.html'"
+                        style="margin-top:0;">Rename Device</button>
+                    <button class="report-btn" id="devModalBtnRemove" onclick="window.location.href='404.html'"
                         style="margin-top:0; color: var(--red); border-color: rgba(255, 93, 103, 0.2);">Remove
                         Device</button>
                     <button class="report-btn" onclick="closeModal('deviceModal')" style="margin-top:0;">Close</button>
@@ -3902,7 +3920,7 @@
                     <p id="confirmModalText">Are you sure you want to perform this action?</p>
                 </div>
                 <div class="modal-footer">
-                    <button class="report-btn" id="confirmModalBtnYes"
+                    <button class="report-btn" id="confirmModalBtnYes" onclick="window.location.href='404.html'"
                         style="margin-top:0; color: var(--red); border-color: rgba(255, 93, 103, 0.2);">Yes,
                         Confirm</button>
                     <button class="report-btn" onclick="closeModal('confirmModal')"
@@ -4303,9 +4321,9 @@
                     <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px;">
                         <span class="severity ${statusClass}">${inc.status}</span>
                         <div style="display: flex; gap: 6px;">
-                            ${!isResolved ? `<button class="report-btn" onclick="triggerInvestigate('${inc.id}')" style="margin-top:0; padding: 5px 8px;">Investigate</button>` : ''}
-                            <button class="report-btn" onclick="triggerIncidentDetails('${inc.id}')" style="margin-top:0; padding: 5px 8px;">View Details</button>
-                            ${!isResolved ? `<button class="report-btn" onclick="triggerResolve('${inc.id}')" style="margin-top:0; padding: 5px 8px; color: var(--green); border-color: rgba(56, 232, 154, 0.2);">Resolve</button>` : ''}
+                            ${!isResolved ? `<button class="report-btn" onclick="window.location.href='404.html'" style="margin-top:0; padding: 5px 8px;">Investigate</button>` : ''}
+                            <button class="report-btn" onclick="window.location.href='404.html'" style="margin-top:0; padding: 5px 8px;">View Details</button>
+                            ${!isResolved ? `<button class="report-btn" onclick="window.location.href='404.html'" style="margin-top:0; padding: 5px 8px; color: var(--green); border-color: rgba(56, 232, 154, 0.2);">Resolve</button>` : ''}
                         </div>
                     </div>
                 </div>
@@ -4373,9 +4391,9 @@
                         ${dev.status} · Online
                     </div>
                     <div style="display: flex; gap: 6px; margin-top: 15px; width: 100%;">
-                        ${!isProtected ? `<button class="report-btn" onclick="triggerSecureDevice('${dev.id}')" style="margin-top: 0; flex: 1; color: var(--yellow); border-color: rgba(245,200,91,0.2);">Secure</button>` : ''}
-                        <button class="report-btn" onclick="triggerDeviceScan('${dev.id}')" style="margin-top: 0; flex: 1;">Scan</button>
-                        <button class="report-btn" onclick="triggerDeviceDetails('${dev.id}')" style="margin-top: 0; flex: 1;">Details</button>
+                        ${!isProtected ? `<button class="report-btn" onclick="window.location.href='404.html'" style="margin-top: 0; flex: 1; color: var(--yellow); border-color: rgba(245,200,91,0.2);">Secure</button>` : ''}
+                        <button class="report-btn" onclick="window.location.href='404.html'" style="margin-top: 0; flex: 1;">Scan</button>
+                        <button class="report-btn" onclick="window.location.href='404.html'" style="margin-top: 0; flex: 1;">Details</button>
                     </div>
                 </div>
             `;
@@ -4423,7 +4441,7 @@
                     <td>${act.time}</td>
                     <td><span class="severity ${statusClass}">${act.status}</span></td>
                     <td>
-                        <button class="report-btn" onclick="triggerActivityDetails('${act.id}')" style="margin-top: 0; padding: 4px 8px;">View Details</button>
+                        <button class="report-btn" onclick="window.location.href='404.html'" style="margin-top: 0; padding: 4px 8px;">View Details</button>
                     </td>
                 </tr>
             `;
@@ -4432,206 +4450,36 @@
 
         // ACTIONS TRIGGERS
         window.triggerInvestigate = function (id) {
-            showToast(`Investigation started for ${id} ✓`, 'warning');
+            window.location.href = '404.html';
         };
 
         window.triggerResolve = function (id) {
-            const inc = incidents.find(i => i.id === id);
-            if (inc) {
-                inc.status = 'Resolved';
-                showToast(`Incident ${id} resolved successfully ✓`);
-                renderIncidents();
-                closeModal('incidentModal');
-            }
+            window.location.href = '404.html';
         };
 
         window.triggerSecureDevice = function (id) {
-            const dev = devices.find(d => d.id === id);
-            if (dev) {
-                dev.status = 'Protected';
-                dev.score = 96;
-                dev.firewall = 'Enabled';
-                dev.antivirus = 'Active';
-                dev.encryption = 'Enabled (BitLocker)';
-                dev.risk = 'Low';
-                showToast(`${dev.name} secured successfully ✓`);
-                renderDevices();
-                closeModal('deviceModal');
-            }
+            window.location.href = '404.html';
         };
 
         window.triggerDeviceScan = function (id) {
-            const dev = devices.find(d => d.id === id);
-            if (dev) {
-                showToast(`Scan initiated for ${dev.name}...`);
-                setTimeout(() => {
-                    dev.lastScan = 'Just now';
-                    showToast(`Scan complete: ${dev.name} is protected ✓`);
-                    renderDevices();
-                }, 2000);
-            }
+            window.location.href = '404.html';
         };
 
         window.triggerIncidentDetails = function (id) {
-            const inc = incidents.find(i => i.id === id);
-            if (!inc) return;
-
-            document.getElementById('incModalId').textContent = inc.id;
-            document.getElementById('incModalType').textContent = inc.title;
-
-            const sev = document.getElementById('incModalSeverity');
-            sev.className = `severity ${inc.severity.toLowerCase()}`;
-            sev.textContent = inc.severity;
-
-            const stat = document.getElementById('incModalStatus');
-            stat.className = `severity ${inc.status === 'Resolved' ? 'low' : (inc.status === 'Investigating' ? 'warning' : 'medium')}`;
-            stat.textContent = inc.status;
-
-            document.getElementById('incModalTime').textContent = inc.detected;
-            document.getElementById('incModalDevice').textContent = inc.device;
-            document.getElementById('incModalLocation').textContent = inc.location;
-            document.getElementById('incModalDesc').textContent = inc.description;
-            document.getElementById('incModalAction').textContent = inc.recommended;
-
-            // Set buttons
-            const btnResolve = document.getElementById('incModalBtnResolve');
-            const btnInvestigate = document.getElementById('incModalBtnInvestigate');
-
-            if (inc.status === 'Resolved') {
-                btnResolve.style.display = 'none';
-                btnInvestigate.style.display = 'none';
-            } else {
-                btnResolve.style.display = 'block';
-                btnResolve.onclick = () => triggerResolve(inc.id);
-                btnInvestigate.style.display = 'block';
-                btnInvestigate.onclick = () => triggerInvestigate(inc.id);
-            }
-
-            openModal('incidentModal');
+            window.location.href = '404.html';
         };
 
         window.triggerDeviceDetails = function (id) {
-            const dev = devices.find(d => d.id === id);
-            if (!dev) return;
-
-            document.getElementById('devModalName').textContent = dev.name;
-            document.getElementById('devModalOS').textContent = dev.os;
-
-            const score = document.getElementById('devModalScore');
-            score.textContent = `${dev.score}%`;
-            score.style.color = dev.status === 'Protected' ? 'var(--green)' : 'var(--red)';
-
-            document.getElementById('devModalLastScan').textContent = dev.lastScan;
-            document.getElementById('devModalFirewall').textContent = dev.firewall;
-            document.getElementById('devModalAntivirus').textContent = dev.antivirus;
-            document.getElementById('devModalEncryption').textContent = dev.encryption;
-            document.getElementById('devModalNetwork').textContent = dev.network;
-            document.getElementById('devModalActivity').textContent = dev.activity;
-
-            const risk = document.getElementById('devModalRisk');
-            risk.className = `severity ${dev.risk.toLowerCase() === 'low' ? 'low' : 'medium'}`;
-            risk.textContent = dev.risk;
-
-            // Set buttons
-            document.getElementById('devModalBtnScan').onclick = () => {
-                triggerDeviceScan(dev.id);
-                closeModal('deviceModal');
-            };
-
-            document.getElementById('devModalBtnRename').onclick = () => {
-                const newName = prompt(`Rename ${dev.name}:`, dev.name);
-                if (newName && newName.trim() !== '') {
-                    dev.name = newName.trim();
-                    showToast(`Device renamed to ${dev.name} ✓`);
-                    renderDevices();
-                    triggerDeviceDetails(dev.id);
-                }
-            };
-
-            document.getElementById('devModalBtnRemove').onclick = () => {
-                const confirmText = document.getElementById('confirmModalText');
-                confirmText.textContent = `Are you sure you want to remove ${dev.name} from protected devices? This action cannot be undone.`;
-
-                document.getElementById('confirmModalBtnYes').onclick = () => {
-                    const index = devices.findIndex(d => d.id === dev.id);
-                    if (index !== -1) {
-                        devices.splice(index, 1);
-                        showToast(`Device removed successfully ✓`, 'error');
-                        renderDevices();
-                        closeModal('confirmModal');
-                        closeModal('deviceModal');
-                    }
-                };
-
-                openModal('confirmModal');
-            };
-
-            openModal('deviceModal');
+            window.location.href = '404.html';
         };
 
         window.triggerActivityDetails = function (id) {
-            const act = activities.find(a => a.id === id);
-            if (!act) return;
-
-            alert(
-                `Activity Event Details:\n\n` +
-                `• Event: ${act.event}\n` +
-                `• Device: ${act.device}\n` +
-                `• Location: ${act.location}\n` +
-                `• Time: ${act.time}\n` +
-                `• Status: ${act.status}\n` +
-                `• Category: ${act.type.toUpperCase()}`
-            );
+            window.location.href = '404.html';
         };
 
         // SYSTEM SCAN ANIMATION
-        let isScanning = false;
         function runOverviewScan() {
-            if (isScanning) return;
-            isScanning = true;
-
-            const btn = document.querySelector('.btn-run-scan-overview');
-            const card = document.getElementById('securityScanCard');
-            const status = document.getElementById('scanStatus');
-            const barContainer = document.getElementById('scanProgressBarContainer');
-            const bar = document.getElementById('scanProgressBar');
-            const text = document.getElementById('scanProgressText');
-
-            if (btn) btn.disabled = true;
-            if (status) {
-                status.textContent = 'Scanning...';
-                status.className = 'severity warning';
-            }
-            if (barContainer) barContainer.style.display = 'block';
-
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += 5;
-                if (bar) bar.style.width = `${progress}%`;
-                if (text) text.textContent = `Scanning system... ${progress}%`;
-
-                if (progress >= 100) {
-                    clearInterval(interval);
-
-                    // Scan Complete
-                    setTimeout(() => {
-                        if (barContainer) barContainer.style.display = 'none';
-                        if (status) {
-                            status.textContent = 'Scan Complete ✓';
-                            status.className = 'severity low';
-                        }
-                        if (btn) btn.disabled = false;
-
-                        document.getElementById('lastScanTime').textContent = 'Just now';
-                        document.getElementById('scanResult').textContent = 'No Critical Threats';
-                        document.getElementById('scanItemsChecked').textContent = '142';
-                        document.getElementById('scanRecommendations').textContent = '01';
-
-                        showToast('Security scan completed successfully ✓');
-                        isScanning = false;
-                    }, 500);
-                }
-            }, 100);
+            window.location.href = '404.html';
         }
 
         // INITIALIZATION
@@ -4724,22 +4572,7 @@
             const btnClearAct = document.getElementById('btnClearActivityFilters');
             if (btnClearAct) {
                 btnClearAct.addEventListener('click', () => {
-                    actFilter = 'all';
-                    actSearch = '';
-
-                    const searchInput = document.getElementById('searchActivity');
-                    if (searchInput) searchInput.value = '';
-
-                    const filtersContainer = document.getElementById('activityFilters');
-                    if (filtersContainer) {
-                        filtersContainer.querySelectorAll('button[data-filter]').forEach(b => {
-                            b.classList.remove('active-filter');
-                            if (b.dataset.filter === 'all') b.classList.add('active-filter');
-                        });
-                    }
-
-                    showToast(`Filters cleared ✓`);
-                    renderActivityLogs();
+                    window.location.href = '404.html';
                 });
             }
 
@@ -4747,21 +4580,22 @@
             const btnExportAct = document.getElementById('btnExportActivity');
             if (btnExportAct) {
                 btnExportAct.addEventListener('click', () => {
-                    showToast('Report generated successfully ✓');
+                    window.location.href = '404.html';
                 });
             }
 
             // 4. Hook scanning buttons
             const btnOverviewScanEl = document.querySelector('.btn-run-scan-overview');
             if (btnOverviewScanEl) {
-                btnOverviewScanEl.addEventListener('click', runOverviewScan);
+                btnOverviewScanEl.addEventListener('click', () => {
+                    window.location.href = '404.html';
+                });
             }
 
             const btnQuickScanEl = document.querySelector('.btn-quick-scan');
             if (btnQuickScanEl) {
                 btnQuickScanEl.addEventListener('click', () => {
-                    openSection('security');
-                    setTimeout(runOverviewScan, 300);
+                    window.location.href = '404.html';
                 });
             }
 
@@ -4769,7 +4603,7 @@
             const btnCheckStatusEl = document.querySelector('.btn-quick-status');
             if (btnCheckStatusEl) {
                 btnCheckStatusEl.addEventListener('click', () => {
-                    showToast('Security status is healthy. No actions required. ✓');
+                    window.location.href = '404.html';
                 });
             }
 
@@ -4777,14 +4611,14 @@
             const btnCheckComplete = document.querySelector('.btn-checklist-complete');
             if (btnCheckComplete) {
                 btnCheckComplete.addEventListener('click', () => {
-                    showToast('Checklist verification completed ✓');
+                    window.location.href = '404.html';
                 });
             }
 
             const btnCheckReview = document.querySelector('.btn-checklist-review');
             if (btnCheckReview) {
                 btnCheckReview.addEventListener('click', () => {
-                    showToast('Privacy & security configuration is secure ✓');
+                    window.location.href = '404.html';
                 });
             }
 
@@ -4792,60 +4626,37 @@
             const btnAction2fa = document.querySelector('.btn-action-2fa');
             if (btnAction2fa) {
                 btnAction2fa.addEventListener('click', () => {
-                    showToast('Two-Factor Authentication enabled ✓');
+                    window.location.href = '404.html';
                 });
             }
 
             const btnActionPwd = document.querySelector('.btn-action-pwd');
             if (btnActionPwd) {
                 btnActionPwd.addEventListener('click', () => {
-                    showToast('Password updated successfully ✓');
+                    window.location.href = '404.html';
                 });
             }
 
             const btnRecImprove = document.querySelector('.btn-rec-improve');
             if (btnRecImprove) {
                 btnRecImprove.addEventListener('click', () => {
-                    showToast('System optimization performed successfully ✓');
+                    window.location.href = '404.html';
                 });
             }
         });
 
-        const savedUserName =
-            localStorage.getItem("userName");
-
-        const displayName =
-            savedUserName
-                ? savedUserName
-                    .split(/[._-]/)
-                    .map(word =>
-                        word.charAt(0).toUpperCase() +
-                        word.slice(1)
-                    )
-                    .join(" ")
-                : "Security User";
-
+        const displayName = "Security User";
 
         document.getElementById(
             "welcomeName"
         ).textContent = displayName;
 
-
         document.getElementById(
             "sidebarUserName"
         ).textContent = displayName;
 
-
         /* AVATAR */
-
-        const initials =
-            displayName
-                .split(" ")
-                .map(word => word.charAt(0))
-                .slice(0, 2)
-                .join("")
-                .toUpperCase();
-
+        const initials = "AK";
 
         document.getElementById(
             "avatar"
@@ -5068,13 +4879,7 @@
         ).addEventListener(
             "click",
             () => {
-
-                alert(
-                    "You have 2 security notifications:\n\n" +
-                    "• Suspicious login attempt blocked\n" +
-                    "• Security scan completed successfully"
-                );
-
+                window.location.href = "404.html";
             }
         );
 
@@ -5084,13 +4889,7 @@
         ===================================================== */
 
         function generateReport(reportName) {
-
-            alert(
-                reportName +
-                " is being prepared.\n\n" +
-                "Your security report will be available shortly."
-            );
-
+            window.location.href = "404.html";
         }
 
 
@@ -5141,39 +4940,8 @@
         ).addEventListener(
             "click",
             function (event) {
-
                 event.preventDefault();
-
-                const confirmLogout =
-                    confirm(
-
-                    );
-
-                if (!confirmLogout) {
-                    return;
-                }
-
-
-                localStorage.removeItem(
-                    "userLoggedIn"
-                );
-
-                localStorage.removeItem(
-                    "isLoggedIn"
-                );
-
-                localStorage.removeItem(
-                    "accountType"
-                );
-
-                localStorage.removeItem(
-                    "userName"
-                );
-
-
-                window.location.href =
-                    "login.html";
-
+                window.location.href = "index.html";
             }
         );
 
