@@ -175,7 +175,7 @@ canvas {
     }
 
     .brand-sub {
-        font-size: 7px !important;
+        font-size: 9.5px !important;
         letter-spacing: 1.5px;
     }
 }
@@ -205,7 +205,7 @@ canvas {
     }
 
     .brand-sub {
-        font-size: 6.5px !important;
+        font-size: 9.5px !important;
     }
 }
 
@@ -310,7 +310,7 @@ canvas {
 
     .hero-eyebrow,
     .section-label {
-        font-size: 11px !important;
+        font-size: 12px !important;
         letter-spacing: 1.5px !important;
         padding: 4px 10px !important;
         max-width: 100% !important;
@@ -334,8 +334,8 @@ canvas {
 
     .hero-description,
     .page-hero-description {
-        font-size: 13.5px !important;
-        line-height: 1.55 !important;
+        font-size: 15px !important;
+        line-height: 1.65 !important;
     }
 }
 
@@ -586,7 +586,7 @@ canvas {
 
     .service-badge,
     .service-tag {
-        font-size: 11px !important;
+        font-size: 12px !important;
         padding: 4px 9px !important;
         max-width: 100% !important;
         white-space: normal !important;
@@ -991,7 +991,7 @@ canvas {
 
     .hero-description,
     .page-hero-description {
-        font-size: 12.5px !important;
+        font-size: 14px !important;
     }
 
     .section-title {
@@ -1011,7 +1011,7 @@ canvas {
     .btn,
     button.btn,
     a.btn {
-        font-size: 12.5px !important;
+        font-size: 14px !important;
         padding: 9px 12px !important;
         letter-spacing: 0 !important;
     }
