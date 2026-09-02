@@ -1602,9 +1602,9 @@ ol {
 }
 
 .services-heading p {
-    color: #778782;
+    color: #fdfffe;
 
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.8;
 }
 
@@ -1714,9 +1714,9 @@ ol {
 
     margin-top: 15px;
 
-    color: #758680;
+    color: #f1f5f4;
 
-    font-size: 13px;
+    font-size: 18px;
     line-height: 1.8;
 }
 
@@ -7302,4 +7302,15 @@ textarea.form-control {
     margin: 0 auto;
     font-size: 18px;
     line-height: 1.8;
+}
+
+
+.section-label {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.section-label span {
+    font-size: 30px;
+    font-weight: 700;
 }
